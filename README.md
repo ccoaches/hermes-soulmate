@@ -1,4 +1,4 @@
-# Hermes Soulmate
+# Hermes SoulMate
 
 **The matchmaker for your agent fleet.**
 
