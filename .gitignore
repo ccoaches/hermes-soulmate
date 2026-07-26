@@ -1,0 +1,10 @@
+node_modules/
+node_modules
+.DS_Store
+*.log
+*.bak-*
+
+# personal / local-only: contains real machine + account details
+intake_server.py
+reference/
+hermes-intake-answers*.json
