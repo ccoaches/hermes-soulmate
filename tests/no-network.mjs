@@ -35,6 +35,7 @@ let phase = 'setup';
 const attempts = [];   // every request the browser tried, tagged by phase
 const responses = [];  // anything that actually came back from a remote host
 const failed = [];     // requests that failed, with the reason
+const pageErrors = [];
 
 let failures = 0;
 const check = (name, ok, detail = '') => {
@@ -42,8 +43,10 @@ const check = (name, ok, detail = '') => {
   if (!ok) failures++;
 };
 
-const browser = await chromium.launch();
+const browser = await chromium.launch(process.env.PLAYWRIGHT_CHANNEL
+  ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {});
 const page = await browser.newPage();
+page.on('pageerror', error => pageErrors.push(error.message));
 
 page.on('request', r => { if (!isLocal(r.url())) attempts.push({ phase, url: r.url(), type: r.resourceType() }); });
 page.on('websocket', ws => { if (!isLocal(ws.url())) attempts.push({ phase, url: ws.url(), type: 'websocket' }); });
@@ -76,20 +79,42 @@ await page.evaluate(() => {
 });
 await page.waitForTimeout(300);
 
-for (let i = 0; i < 8; i++) {
-  const advanced = await page.evaluate(() => {
-    const b = [...document.querySelectorAll('.card button')].find(x => x.textContent.trim() === 'Next →');
-    if (b) { b.click(); return true; }
-    return false;
-  });
-  if (!advanced) break;
-  await page.waitForTimeout(180);
+// Revisiting a skipped section must retain answers and allow it back into exports.
+await page.locator('[data-fid="identity.fullName"]').fill('Jordan Reyes');
+await page.locator('#skip').click();
+await page.locator('#back').click();
+check('skipped section retains its editable answers',
+  await page.locator('[data-fid="identity.fullName"]').inputValue() === 'Jordan Reyes');
+await page.locator('[data-fid="identity.fullName"]').fill('Jordan Example');
+check('editing a skipped section restores it for export',
+  await page.evaluate(() => !state.skipped.identity));
+await page.locator('#skip').click();
+await page.locator('#back').click();
+await page.locator('#next').click();
+check('Next restores a skipped section without requiring edits',
+  await page.evaluate(() => !state.skipped.identity));
+
+for (let i = 0; i < 30; i++) {
+  if (pageErrors.length) break;
+  if (await page.locator('#dl-sh').count()) break;
+  await page.locator('#next').click();
 }
-await page.waitForTimeout(500);
+check('browser renders without JavaScript errors', pageErrors.length === 0, pageErrors.join('; '));
+if (pageErrors.length) {
+  await browser.close();
+  process.exit(1);
+}
+await page.locator('#dl-sh').waitFor();
 
 const filesGenerated = await page.evaluate(() =>
   document.querySelectorAll('.file-tree li, .file-item, [data-file]').length);
 check('interview filled and deployment spec generated', filesGenerated > 0, `${filesGenerated} files`);
+
+const downloadReady = page.waitForEvent('download');
+await page.locator('#dl-sh').click();
+const download = await downloadReady;
+check('installer download completes', download.suggestedFilename() === 'setup-fleet.sh' &&
+  await download.failure() === null);
 
 const normalAttempts = attempts.filter(a => a.phase === 'normal-use');
 check('NORMAL USE: zero external requests even attempted', normalAttempts.length === 0,

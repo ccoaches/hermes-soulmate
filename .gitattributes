@@ -1,0 +1,2 @@
+# Keep published bytes identical across Windows, Git, and GitHub Pages.
+docs/* text eol=lf

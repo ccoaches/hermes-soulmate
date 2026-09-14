@@ -1,0 +1,9 @@
+# Publish the Hermes wizard for nontechnical visitors
+
+Goal: users open https://ccoaches.github.io/hermes-soulmate/ and use the existing v2 wizard without cloning a repo, installing Node or signing into an AI. Preserve the Hermes gold/ivory design and all session/agent-kit behavior. Repo authority is ccoaches/hermes-soulmate only.
+
+Worker ownership: `tools/build-site.mjs`, `tests/site-build.mjs`, generated `docs/` ONLY. Parent handles README, gitignore, GitHub settings/push. You are not alone; preserve existing work. No dependencies. No push by worker.
+
+Build script copies an explicit allowlist from v2 to docs: index.html, app.mjs, styles.css, interview.mjs, questions.json, START-HERE.md, RESEARCH.md. Include .nojekyll and a site-manifest.json with SHA256 for each public file (exclude itself). Never copy personal answers, output, node_modules, server/CLI, specs, unused Alpha Ranch assets, or arbitrary files. `--check` verifies exact bytes/manifest and flags unexpected files; no silent stale assets. Build should refuse unexpected existing docs files rather than delete unrelated content. Script zero dependencies, node18+. Relevant safety path checking and exact allowlist.
+
+Test: real browser loads generated docs under /hermes-soulmate/ project prefix, static no remote requests, start/answer/reload proves usable, agent-kit download contains catalog and current session, .nojekyll present and manifest correct. Use Playwright Chrome alreadyavailable. Add meaningful build test which verifies allowlist, stale detection and private file not copied (synthetic fixture in temporary directory if needed; avoid changing live useroutputs). Reuse existing engine/browser patterns. Run build, --check, tests/site-build.mjs. Parent independently verifies. Generated docs are committed for GitHub Pages branch-main/docs publishing, no workflow necessary.

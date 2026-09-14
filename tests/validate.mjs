@@ -275,7 +275,8 @@ function checkPublishSafety() {
   const PRIVATE_PATTERNS = [
     // Each private range is spelled out: writing this as (?:10|127|192\.168)\.\d+\.\d+\.\d+
     // silently required FIVE octets after 192.168 and matched nothing real.
-    { re: /\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|127\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})\b/, what: 'private IP address' },
+    // The universal loopback address used by the v2 preview is public setup documentation.
+    { re: /\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|127\.(?!0\.0\.1\b)\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})\b/, what: 'private IP address' },
     { re: /\b100\.(?:[6-9]\d|1[01]\d|12[0-7])\.\d{1,3}\.\d{1,3}\b/, what: 'Tailscale IP' },
     { re: /[A-Za-z0-9._%+-]+@(?!example\.(?:com|org)\b)[A-Za-z0-9.-]+\.[A-Za-z]{2,}/, what: 'email address' },
     // Usernames contain spaces ("C:\Users\Jane Doe\"), so do not exclude \s here.

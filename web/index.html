@@ -73,6 +73,11 @@ header.top{display:flex; align-items:center; gap:14px; margin-bottom:6px; flex-w
   padding:4px 10px; border-radius:8px; font-size:12px; cursor:pointer; font-family:var(--sans)}
 .tier-opt.active{border-color:var(--amber); color:var(--amber); background:rgba(255,138,61,.08)}
 .tier-note{font-size:11px; color:var(--subtle); margin-left:auto}
+@media(max-width:560px){
+  .tier-bar{flex-wrap:wrap}
+  .tier-opts{flex-wrap:wrap}
+  .tier-note{flex-basis:100%;margin-left:0}
+}
 
 .field{margin-bottom:16px; min-width:0}
 .field label{display:block; font-size:13.5px; font-weight:600; margin-bottom:5px}
@@ -574,6 +579,27 @@ footer a{color:var(--cyan); text-decoration:none}
               "default": "1week"
             }
           ]
+        },
+        {
+          "id": "personalValues",
+          "type": "textarea",
+          "label": "What values should guide your agents?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "decisionStyle",
+          "type": "textarea",
+          "label": "How do you prefer to make decisions?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "accessibilityPreferences",
+          "type": "textarea",
+          "label": "What makes information easier to use?",
+          "required": false,
+          "contextExport": true
         }
       ]
     },
@@ -914,8 +940,23 @@ footer a{color:var(--cyan); text-decoration:none}
                 }
               ],
               "default": "never"
+            },
+            {
+              "id": "audience",
+              "type": "text",
+              "label": "Intended audience",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "objective",
+              "type": "text",
+              "label": "What do you want this account to achieve?",
+              "required": false,
+              "contextExport": true
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "emailAccounts",
@@ -1518,7 +1559,8 @@ footer a{color:var(--cyan); text-decoration:none}
                 }
               ]
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "knowledgeReadOnly",
@@ -1570,6 +1612,29 @@ footer a{color:var(--cyan); text-decoration:none}
           "label": "Anything else about how your notes are organised?",
           "help": "Optional. Folder conventions, naming, what to ignore.",
           "rows": 3
+        },
+        {
+          "id": "trustedSources",
+          "type": "textarea",
+          "label": "Which sources do you trust?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "rememberPreferences",
+          "type": "textarea",
+          "label": "What would you like agents to remember?",
+          "required": false,
+          "contextExport": true,
+          "help": "Guidance for your agents; this does not guarantee how a connected runtime stores or deletes information."
+        },
+        {
+          "id": "doNotRetain",
+          "type": "textarea",
+          "label": "What should agents avoid retaining?",
+          "required": false,
+          "contextExport": true,
+          "help": "Guidance for your agents; this does not guarantee how a connected runtime stores or deletes information."
         }
       ]
     },
@@ -1578,7 +1643,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "title": "Work & Business",
       "intro": "Your career and business context help your fleet support your actual work.",
       "skippable": true,
-      "sensitivity": false,
+      "sensitivity": true,
       "fields": [
         {
           "id": "roles",
@@ -1825,6 +1890,20 @@ footer a{color:var(--cyan); text-decoration:none}
           "label": "The Human-Only Zone",
           "help": "Tasks your fleet should NEVER touch — be specific.",
           "placeholder": "Never draft communications to my board. Never touch legal documents."
+        },
+        {
+          "id": "idealCustomer",
+          "type": "textarea",
+          "label": "Who is your ideal customer or audience?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "businessPriorities",
+          "type": "textarea",
+          "label": "What matters most in your work right now?",
+          "required": false,
+          "contextExport": true
         }
       ]
     },
@@ -1866,8 +1945,51 @@ footer a{color:var(--cyan); text-decoration:none}
                 }
               ],
               "default": "medium"
+            },
+            {
+              "id": "deadline",
+              "type": "text",
+              "label": "Target date",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "successMeasure",
+              "type": "text",
+              "label": "How will you measure success?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "currentBaseline",
+              "type": "text",
+              "label": "Where are you starting?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "nextMilestone",
+              "type": "text",
+              "label": "Next milestone",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "obstacle",
+              "type": "text",
+              "label": "Main obstacle",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "timeAvailable",
+              "type": "text",
+              "label": "Time available",
+              "required": false,
+              "contextExport": true
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "monitorDomains",
@@ -1961,28 +2083,32 @@ footer a{color:var(--cyan); text-decoration:none}
               "label": "Remind Me",
               "default": true
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "familyLogistics",
           "type": "textarea",
           "label": "Family Logistics",
           "help": "School runs, activities, coordination needs.",
-          "placeholder": "Kids' soccer practice Tuesdays, grocery pickup Fridays"
+          "placeholder": "Kids' soccer practice Tuesdays, grocery pickup Fridays",
+          "contextExport": true
         },
         {
           "id": "travel",
           "type": "textarea",
           "label": "Travel Plans",
           "help": "Upcoming trips for planning support.",
-          "placeholder": "Considering Italy in September, weekend trips quarterly"
+          "placeholder": "Considering Italy in September, weekend trips quarterly",
+          "contextExport": true
         },
         {
           "id": "homeProjects",
           "type": "textarea",
           "label": "Home Projects",
           "help": "Renovations, repairs, improvements.",
-          "placeholder": "Kitchen remodel Q3, paint garage"
+          "placeholder": "Kitchen remodel Q3, paint garage",
+          "contextExport": true
         },
         {
           "id": "moneyContext",
@@ -2032,7 +2158,8 @@ footer a{color:var(--cyan); text-decoration:none}
               "type": "text",
               "label": "Details"
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "subscriptionAudit",
@@ -2040,8 +2167,496 @@ footer a{color:var(--cyan); text-decoration:none}
           "label": "Interested in Subscription Audit",
           "help": "Your fleet can track and optimize recurring costs.",
           "default": false
+        },
+        {
+          "id": "nearTermFocus",
+          "type": "textarea",
+          "label": "What matters over the next few weeks?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "successDefinition",
+          "type": "textarea",
+          "label": "What would success look like?",
+          "required": false,
+          "contextExport": true
         }
       ]
+    },
+    {
+      "id": "projects",
+      "title": "Projects & Workflows",
+      "intro": "Optional: tell your agents what is underway and how recurring work gets done.",
+      "fields": [
+        {
+          "id": "activeProjects",
+          "type": "repeater",
+          "label": "Active projects",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "name",
+              "type": "text",
+              "label": "Name",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "outcome",
+              "type": "text",
+              "label": "Desired outcome",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "deadline",
+              "type": "text",
+              "label": "Target date",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "status",
+              "type": "text",
+              "label": "Current status",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "nextAction",
+              "type": "text",
+              "label": "Next action",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "blocker",
+              "type": "text",
+              "label": "What is blocking progress?",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "recurringWorkflows",
+          "type": "repeater",
+          "label": "Recurring workflows",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "name",
+              "type": "text",
+              "label": "Name",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "trigger",
+              "type": "text",
+              "label": "What starts it?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "frequency",
+              "type": "text",
+              "label": "How often?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "currentTools",
+              "type": "text",
+              "label": "Current tools",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "desiredOutput",
+              "type": "text",
+              "label": "Desired output",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "doneWhen",
+              "type": "text",
+              "label": "How do you know it is done?",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "priorityRules",
+          "type": "textarea",
+          "label": "How should competing priorities be handled?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "workingConstraints",
+          "type": "textarea",
+          "label": "What limits your working time or options?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "deliverablePreferences",
+          "type": "textarea",
+          "label": "What makes a useful finished result?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "followUpRules",
+          "type": "textarea",
+          "label": "How should unfinished work be followed up?",
+          "required": false,
+          "contextExport": true
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
+    },
+    {
+      "id": "content",
+      "title": "Content & Audience",
+      "intro": "Optional: describe your audience, voice and publishing preferences. This guidance does not authorize posting.",
+      "fields": [
+        {
+          "id": "audience",
+          "type": "textarea",
+          "label": "Who do you want to reach?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "contentPillars",
+          "type": "repeater",
+          "label": "Content themes",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "topic",
+              "type": "text",
+              "label": "Topic",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "purpose",
+              "type": "text",
+              "label": "Purpose",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "voiceExamples",
+          "type": "textarea",
+          "label": "Examples of your voice",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "avoidTopics",
+          "type": "textarea",
+          "label": "Topics or language to avoid",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "publishingPlan",
+          "type": "repeater",
+          "label": "Publishing preferences",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "platform",
+              "type": "text",
+              "label": "Platform",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "formats",
+              "type": "text",
+              "label": "Formats",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "cadence",
+              "type": "text",
+              "label": "How often?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "reviewProcess",
+              "type": "text",
+              "label": "Review before publishing",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "successMeasures",
+          "type": "textarea",
+          "label": "How will you judge content results?",
+          "required": false,
+          "contextExport": true
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
+    },
+    {
+      "id": "wellbeing",
+      "title": "Health & Wellbeing",
+      "intro": "Optional preferences and reminder context. Share only what you are comfortable sharing; no medical records or clinical details are needed.",
+      "fields": [
+        {
+          "id": "supportGoals",
+          "type": "textarea",
+          "label": "What everyday wellbeing support would help?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "routines",
+          "type": "repeater",
+          "label": "Routines you want help remembering",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "activity",
+              "type": "text",
+              "label": "Activity",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "schedule",
+              "type": "text",
+              "label": "When?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "supportWanted",
+              "type": "text",
+              "label": "Support wanted",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "sleepPreferences",
+          "type": "textarea",
+          "label": "Sleep and rest preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "foodPreferences",
+          "type": "textarea",
+          "label": "Food preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "activityPreferences",
+          "type": "textarea",
+          "label": "Activity preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "trackingSources",
+          "type": "repeater",
+          "label": "Things you choose to track",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "source",
+              "type": "text",
+              "label": "Source name (no login details)",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "whatToTrack",
+              "type": "text",
+              "label": "What to track",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "reviewFrequency",
+              "type": "text",
+              "label": "Review frequency",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "Family & Lifestyle",
+      "intro": "Optional: describe everyday responsibilities, interests and the support you would find useful.",
+      "fields": [
+        {
+          "id": "familyResponsibilities",
+          "type": "repeater",
+          "label": "Family responsibilities",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "responsibility",
+              "type": "text",
+              "label": "Responsibility",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "person",
+              "type": "text",
+              "label": "Who is involved? (a nickname is enough)",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "schedule",
+              "type": "text",
+              "label": "When?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "supportWanted",
+              "type": "text",
+              "label": "Support wanted",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "travelPreferences",
+          "type": "textarea",
+          "label": "Travel preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "leisureInterests",
+          "type": "textarea",
+          "label": "Interests and leisure",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "learningGoals",
+          "type": "repeater",
+          "label": "Things you want to learn",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "topic",
+              "type": "text",
+              "label": "Topic",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "level",
+              "type": "text",
+              "label": "Current level",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "preferredFormat",
+              "type": "text",
+              "label": "Preferred way to learn",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "timeAvailable",
+              "type": "text",
+              "label": "Time available",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "householdRoutines",
+          "type": "repeater",
+          "label": "Household routines",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "task",
+              "type": "text",
+              "label": "Task",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "frequency",
+              "type": "text",
+              "label": "How often?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "owner",
+              "type": "text",
+              "label": "Who handles it?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "reminder",
+              "type": "text",
+              "label": "Reminder preferences",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "personalBoundaries",
+          "type": "textarea",
+          "label": "Personal boundaries",
+          "required": false,
+          "contextExport": true
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
     },
     {
       "id": "guardrails",
@@ -2195,8 +2810,8 @@ footer a{color:var(--cyan); text-decoration:none}
           "type": "text",
           "label": "Approval Token Format",
           "help": "Format for approval tokens (default shown).",
-          "placeholder": "<OWNER>_APPROVED_<AGENT>:<slug>",
-          "default": "<OWNER>_APPROVED_<AGENT>:<slug>"
+          "placeholder": "\u003cOWNER>_APPROVED_\u003cAGENT>:\u003cslug>",
+          "default": "\u003cOWNER>_APPROVED_\u003cAGENT>:\u003cslug>"
         },
         {
           "id": "privacyTier",
@@ -2361,6 +2976,20 @@ footer a{color:var(--cyan); text-decoration:none}
           "label": "Pet Peeves",
           "help": "Things your fleet should NEVER do.",
           "placeholder": "Don't repeat yourself. Don't ask for permission on trivial things. No hype."
+        },
+        {
+          "id": "urgentAlerts",
+          "type": "textarea",
+          "label": "What deserves an urgent alert?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "checkInPreferences",
+          "type": "textarea",
+          "label": "How would you like agents to check in?",
+          "required": false,
+          "contextExport": true
         }
       ]
     },
@@ -2475,7 +3104,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "humanGates": [
         "must approve all sends"
       ],
-      "approvalToken": "<OWNER>_APPROVED_EMAIL:<slug>",
+      "approvalToken": "\u003cOWNER>_APPROVED_EMAIL:\u003cslug>",
       "soulTemplateId": "inbox-triage",
       "defaultTier": "fleet-visible",
       "suggestedScheduleCron": "0 */2 * * *"
@@ -2537,7 +3166,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "humanGates": [
         "must approve cancellations"
       ],
-      "approvalToken": "<OWNER>_APPROVED_SUBSCRIPTION:<slug>",
+      "approvalToken": "\u003cOWNER>_APPROVED_SUBSCRIPTION:\u003cslug>",
       "soulTemplateId": "subscription-auditor",
       "defaultTier": "fleet-visible",
       "suggestedScheduleCron": "0 9 * * 1"
@@ -2656,7 +3285,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "humanGates": [
         "must approve service provider hires"
       ],
-      "approvalToken": "<OWNER>_APPROVED_HOME:<slug>",
+      "approvalToken": "\u003cOWNER>_APPROVED_HOME:\u003cslug>",
       "soulTemplateId": "home-maintenance",
       "defaultTier": "fleet-visible",
       "suggestedScheduleCron": "0 10 * * 0"
@@ -2689,7 +3318,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "humanGates": [
         "must approve all posts"
       ],
-      "approvalToken": "<OWNER>_APPROVED_CONTENT:<slug>",
+      "approvalToken": "\u003cOWNER>_APPROVED_CONTENT:\u003cslug>",
       "soulTemplateId": "content-publisher",
       "defaultTier": "fleet-visible",
       "suggestedScheduleCron": null
@@ -2722,7 +3351,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "humanGates": [
         "must approve all posts"
       ],
-      "approvalToken": "<OWNER>_APPROVED_SOCIAL:<slug>",
+      "approvalToken": "\u003cOWNER>_APPROVED_SOCIAL:\u003cslug>",
       "soulTemplateId": "social-media",
       "defaultTier": "fleet-visible",
       "suggestedScheduleCron": "0 11 * * *"
@@ -2788,7 +3417,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "humanGates": [
         "must approve invoice sending"
       ],
-      "approvalToken": "<OWNER>_APPROVED_INVOICE:<slug>",
+      "approvalToken": "\u003cOWNER>_APPROVED_INVOICE:\u003cslug>",
       "soulTemplateId": "business-ops",
       "defaultTier": "fleet-visible",
       "suggestedScheduleCron": "0 9 * * 1-5"
@@ -3004,10 +3633,18 @@ footer a{color:var(--cyan); text-decoration:none}
           {
             "field": "goals.health",
             "minCount": 1
+          },
+          {
+            "field": "wellbeing.supportGoals",
+            "minCount": 1
+          },
+          {
+            "field": "wellbeing.routines",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You listed health details — a health companion keeps you on track with reminders."
+      "reason": "You described wellbeing support or routines — a companion can help organize reminders."
     },
     {
       "roleId": "family-ops",
@@ -3020,10 +3657,18 @@ footer a{color:var(--cyan); text-decoration:none}
           {
             "field": "goals.familyLogistics",
             "truthy": true
+          },
+          {
+            "field": "lifestyle.familyResponsibilities",
+            "minCount": 1
+          },
+          {
+            "field": "lifestyle.householdRoutines",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You have household members or family logistics — family ops keeps everyone coordinated."
+      "reason": "You described household or family responsibilities — family ops can help coordinate them."
     },
     {
       "roleId": "home-maintenance",
@@ -3048,10 +3693,22 @@ footer a{color:var(--cyan); text-decoration:none}
           {
             "field": "work.grindList",
             "includes": "content-creation"
+          },
+          {
+            "field": "content.audience",
+            "minCount": 1
+          },
+          {
+            "field": "content.contentPillars",
+            "minCount": 1
+          },
+          {
+            "field": "content.publishingPlan",
+            "minCount": 1
           }
         ]
       },
-      "reason": "Content creation is on your grind list — a publisher drafts for your review."
+      "reason": "You described content work — a publisher can prepare drafts for your review."
     },
     {
       "roleId": "social-media",
@@ -3060,10 +3717,14 @@ footer a{color:var(--cyan); text-decoration:none}
           {
             "field": "assets.socialAccounts",
             "minCount": 1
+          },
+          {
+            "field": "content.publishingPlan",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You listed {{count}} social account(s) — social media management keeps you present without burnout."
+      "reason": "You described social accounts or publishing plans — an agent can help organize content for review."
     },
     {
       "roleId": "dev",
@@ -3096,10 +3757,26 @@ footer a{color:var(--cyan); text-decoration:none}
           {
             "field": "work.grindList",
             "includes": "bookkeeping"
+          },
+          {
+            "field": "projects.activeProjects",
+            "minCount": 1
+          },
+          {
+            "field": "projects.recurringWorkflows",
+            "minCount": 1
+          },
+          {
+            "field": "work.businessPriorities",
+            "minCount": 1
+          },
+          {
+            "field": "work.idealCustomer",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You have business operations — business ops streamlines workflows and reporting."
+      "reason": "You described projects or business workflows — business ops can help track progress and prepare reports."
     },
     {
       "roleId": "news-digest",
@@ -3132,10 +3809,14 @@ footer a{color:var(--cyan); text-decoration:none}
           {
             "field": "goals.travel",
             "truthy": true
+          },
+          {
+            "field": "lifestyle.travelPreferences",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You mentioned travel plans — a travel planner researches options without booking."
+      "reason": "You described travel preferences or plans — a planner can research options without booking."
     },
     {
       "roleId": "learning-coach",
@@ -3148,10 +3829,14 @@ footer a{color:var(--cyan); text-decoration:none}
           {
             "field": "work.roles",
             "includes": "student"
+          },
+          {
+            "field": "lifestyle.learningGoals",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You have learning goals — a coach keeps you on track with resources and scheduling."
+      "reason": "You described learning goals — a coach can help organize resources and practice."
     },
     {
       "roleId": "fleet-custodian",
@@ -3635,7 +4320,7 @@ footer a{color:var(--cyan); text-decoration:none}
       "tools": "Use kanban for task tracking. Use memory for context. Use scheduler for timing.",
       "memory": "Maintain awareness of each agent's state and current tasks. Track {{ownerName}}'s preferences and communication style.",
       "handoffs": "Route tasks to appropriate agents: research → researcher, scheduling → scheduler, finance → finance-watcher. Confirm completion before marking done.",
-      "approval": "Route high-stakes decisions to {{ownerName}} via {{approvalChannel}}. Use approval tokens: <OWNER>_APPROVED_<AGENT>:<slug>.",
+      "approval": "Route high-stakes decisions to {{ownerName}} via {{approvalChannel}}. Use approval tokens: \u003cOWNER>_APPROVED_\u003cAGENT>:\u003cslug>.",
       "style": "Communicate with {{tier}} discretion. Be direct, concise, and proactive. Never repeat yourself or ask about trivial things.",
       "refusal": "DENIED: I cannot move money, post publicly, delete files without approval, or access medical/financial records directly. Route these to {{ownerName}}."
     },
@@ -4358,7 +5043,7 @@ footer a{color:var(--cyan); text-decoration:none}
   },
   "fleetDoctrine": {
     "routingDoctrine": "{{ownerName}} decides whether to handle a request directly or delegate it.\nDurable work always routes to the specialist who owns that lane.\nSmall tasks never require a committee vote.\nWhen two profiles claim the same work, {{ownerName}} makes the call and records the decision.\nIf no permanent profile owns the task, spin up a disposable subagent.\nNever invent a permanent profile for one-off work.\nThe command profile delivers a single final answer, not a stack of agent reports.\nWork flows upward to the command profile for synthesis.\nRouting rules live in the shared knowledge layer and must stay current.\nStale routing documentation will send active work to retired agents.",
-    "credentialDoctrine": "Credentials belong exclusively to the command profile.\nSpecialists request access but never hold the keys.\nA permission wall means the boundary is working, not broken.\nRoute the request back to the command profile for execution.\nSubagents inherit zero integrations and zero credentials.\nParent agents must not pass secrets to temporary workers.\nHigh-risk operations stay locked behind the command profile.\n{{ownerName}} retains full control over public tools and approvals.\nCredential leakage breaks the entire fleet architecture.\nKeep access minimal and enforce strict handoff protocols.",
+    "credentialDoctrine": "Integration credentials belong exclusively to the command profile. Model authentication is configured separately per runtime/provider and may be required by each profile.\nSpecialists request access but never hold the keys.\nA permission wall means the boundary is working, not broken.\nRoute the request back to the command profile for execution.\nSubagents inherit zero integrations and zero credentials.\nParent agents must not pass secrets to temporary workers.\nHigh-risk operations stay locked behind the command profile.\n{{ownerName}} retains full control over public tools and approvals.\nCredential leakage breaks the entire fleet architecture.\nKeep access minimal and enforce strict handoff protocols.",
     "subagentDoctrine": "Use disposable subagents for research, testing, critique, and parallel analysis.\nApply the permanence test before creating any new profile.\nDoes the role own real recurring work that outlives a single session?\nDoes it require isolated memory, a different working directory, distinct permissions, and a curated skill set?\nWill you know exactly when work should and should not route to it?\nIf the answer to any question is unclear, keep the worker disposable.\nSpin up the subagent, run the task, and discard it immediately.\nNever grant permanent memory or configuration to temporary workers.\nFleet scale grows only when ownership becomes unambiguous.",
     "memoryDoctrine": "Each agent maintains isolated memory for its own lane.\nShared truth lives in a single centralized knowledge layer.\nA research agent must never absorb a writer's personal habits.\nRole definitions, routing rules, and handoff procedures belong in shared truth.\nLocal memory stores only agent-specific context and working state.\nCross-contamination between agent memories breaks routing accuracy.\n{{ownerName}} reads the shared layer to verify current fleet state.\nUpdate the shared layer whenever ownership or procedures change.\nIsolated memory prevents drift while shared truth keeps the fleet aligned.",
     "verificationDoctrine": "File existence proves nothing about actual system state.\nVerify configuration, active processes, and command line arguments.\nInspect logs and trace real behavior against expected outcomes.\nCheck for credential leakage, duplicate gateways, and stale schedules.\nConfirm that retired profiles no longer receive routing traffic.\nA green status flag can be stale in either direction.\nRun continuous verification to catch model drift and missing skills.\nClean up broken routing references before they trigger failures.\n{{ownerName}} must validate behavior, not just read status files.\nProduction readiness depends on verified recovery, not passive monitoring.",
@@ -4406,11 +5091,21 @@ let state = {
   reviewFile: 0,
 };
 
-function save(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
+const LEGACY_STEP_IDS = ['identity','assets','resources','memory','work','goals','guardrails','rhythm','fleet','review'];
+function save(){
+  state.currentStepId = STEPS[state.currentStep]?.id || STEPS[0].id;
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
 function load(){
   try{
     const s = localStorage.getItem(STORAGE_KEY);
-    if(s){ const p = JSON.parse(s); state = Object.assign(state, p); }
+    if(s){
+      const p = JSON.parse(s);
+      const stepId = p.currentStepId || LEGACY_STEP_IDS[p.currentStep] || STEPS[0].id;
+      state = Object.assign(state, p);
+      state.currentStep = Math.max(0, STEPS.findIndex(step=>step.id===stepId));
+      state.currentStepId = STEPS[state.currentStep].id;
+    }
   }catch(e){}
 }
 function resetAll(){
@@ -4427,8 +5122,50 @@ function esc(s){
 function slugify(s){
   return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40)||'agent';
 }
-function ownerSlug(){ return slugify(state.ownerName||'Owner'); }
-function ownerUpper(){ return (slugify(state.ownerName||'Owner').toUpperCase()).replace(/-/g,'_'); }
+// Export tiers filter generated text; they are not runtime access controls.
+function stepVisibleToAgent(stepId, agent){
+  if(isSkipped(stepId)) return false;
+  const step = STEPS.find(s=>s.id===stepId);
+  if(!step || !step.sensitivity) return true;
+  const required = getTier(stepId);
+  const granted = agent.tier || agent.role.defaultTier || 'fleet-visible';
+  return required==='fleet-visible' || granted==='isolated' ||
+    (required==='specific-agents' && granted==='specific-agents');
+}
+let exportAgent = null;
+let exportActive = false;
+function exportOwner(agent){
+  return agent && !stepVisibleToAgent('identity', agent) ? 'Owner' : (state.ownerName || 'Owner');
+}
+function withAgentContext(agent, generate){
+  const previous = exportAgent;
+  exportAgent = agent;
+  try { return generate(agent); } finally { exportAgent = previous; }
+}
+function normalizeAgents(agents){
+  const reserved = new Set(agents.map(a=>slugify(a.name)));
+  const used = new Set();
+  return agents.map(a=>{
+    const display = String(a.name || '').replace(/\s+/g,' ').trim() || 'Agent';
+    const base = slugify(display);
+    let name = display;
+    let suffix = 2;
+    if(used.has(base)){
+      do {
+        const tail = '-'+suffix++;
+        // Preserve ordinary display names; long names need a bounded stem so
+        // slugify's 40-character cap cannot erase the collision suffix.
+        const stem = slugify(display).length + tail.length > 40 ? base.slice(0,40-tail.length) : display;
+        name = stem+' '+tail.slice(1);
+      } while(used.has(slugify(name)) || reserved.has(slugify(name)));
+    }
+    used.add(slugify(name));
+    return {...a, name};
+  });
+}
+
+function ownerSlug(){ return slugify(exportOwner(exportAgent)); }
+function ownerUpper(){ return (slugify(exportOwner(exportAgent)).toUpperCase()).replace(/-/g,'_'); }
 function flash(msg){
   const el = document.getElementById('flash');
   el.textContent = msg; el.classList.add('show');
@@ -4436,12 +5173,15 @@ function flash(msg){
 }
 function getAnswer(ref){
   if(ref.indexOf('.')===-1) return undefined;
-  return state.answers[ref];
+  if(isSkipped(ref.split('.')[0])) return undefined;
+  return getFieldAnswer(...ref.split('.'));
 }
 function getFieldAnswer(stepId, fieldId){
+  if(((exportActive || exportAgent) && isSkipped(stepId)) || (exportAgent && !stepVisibleToAgent(stepId, exportAgent))) return undefined;
   return state.answers[stepId+'.'+fieldId];
 }
 function setFieldAnswer(stepId, fieldId, val){
+  delete state.skipped[stepId];
   state.answers[stepId+'.'+fieldId] = val; save();
 }
 function getDefault(field){
@@ -4453,6 +5193,7 @@ function getDefault(field){
   }
 }
 function getStepAnswer(stepId, fieldId){
+  if(((exportActive || exportAgent) && isSkipped(stepId)) || (exportAgent && !stepVisibleToAgent(stepId, exportAgent))) return undefined;
   const v = getFieldAnswer(stepId, fieldId);
   return v!==undefined ? v : getDefault(STEPS.find(s=>s.id===stepId).fields.find(f=>f.id===fieldId)||{type:'text'});
 }
@@ -4473,16 +5214,8 @@ function autoTimezone(){
 
 // === YAML EMITTER ===
 function yVal(v){
-  if(v===null||v===undefined) return 'null';
-  if(typeof v==='boolean') return v?'true':'false';
-  if(typeof v==='number') return String(v);
-  v = String(v);
-  if(v==='') return '""';
-  if(v.includes('\n')) return '|\n' + v.split('\n').map(l=>'  '+l).join('\n');
-  if(/[:#{}\[\]]/.test(v) || v.startsWith(' ') || v.endsWith(' ') ||
-     v==='true' || v==='false' || v==='null' || /^-?\d+(\.\d+)?$/.test(v) || /^[-?]/.test(v))
-    return '"'+v.replace(/\\/g,'\\\\').replace(/"/g,'\\"')+'"';
-  return v;
+  if(v===null || v===undefined) return 'null';
+  return JSON.stringify(v);
 }
 function yKey(key, val, indent){
   indent = indent||0;
@@ -4604,8 +5337,12 @@ function resolveMission(role){
   return tpl;
 }
 
+function exportMission(agent){
+  if(agent.missionEdited) return String(agent.mission || '');
+  return !stepVisibleToAgent('goals',agent) ? resolveMission(agent.role) : (agent.mission || agent.role.description);
+}
 function fillVars(tpl, agent){
-  const owner = state.ownerName || 'Owner';
+  const owner = exportOwner(exportAgent);
   const fleet = state.fleetName || 'my-fleet';
   const approvalChannel = getStepAnswer('guardrails','approvalChannel') || 'discord';
   const globalToken = getStepAnswer('guardrails','approvalToken') || '<OWNER>_APPROVED_<AGENT>:<slug>';
@@ -4620,17 +5357,17 @@ function fillVars(tpl, agent){
   // Two passes: {{mission}} expands to the role description, which may itself
   // contain {{ownerName}}. A single pass would leave that nested var unfilled.
   const sub = tpl => tpl
-    .replace(/\{\{agentName\}\}/g, agent.name)
-    .replace(/\{\{fleetName\}\}/g, fleet)
-    .replace(/\{\{ownerName\}\}/g, owner)
-    .replace(/\{\{mission\}\}/g, agent.mission || agent.role.description)
-    .replace(/\{\{gates\}\}/g, gates)
-    .replace(/\{\{mayTouch\}\}/g, mayTouch)
-    .replace(/\{\{readOnly\}\}/g, readOnly)
-    .replace(/\{\{forbidden\}\}/g, forbidden)
-    .replace(/\{\{approvalToken\}\}/g, token)
-    .replace(/\{\{tier\}\}/g, agent.tier || (agent.role && agent.role.defaultTier) || 'fleet-visible')
-    .replace(/\{\{approvalChannel\}\}/g, approvalChannel);
+    .replace(/\{\{agentName\}\}/g, () => agent.name)
+    .replace(/\{\{fleetName\}\}/g, () => fleet)
+    .replace(/\{\{ownerName\}\}/g, () => owner)
+    .replace(/\{\{mission\}\}/g, () => exportMission(agent))
+    .replace(/\{\{gates\}\}/g, () => gates)
+    .replace(/\{\{mayTouch\}\}/g, () => mayTouch)
+    .replace(/\{\{readOnly\}\}/g, () => readOnly)
+    .replace(/\{\{forbidden\}\}/g, () => forbidden)
+    .replace(/\{\{approvalToken\}\}/g, () => token)
+    .replace(/\{\{tier\}\}/g, () => agent.tier || (agent.role && agent.role.defaultTier) || 'fleet-visible')
+    .replace(/\{\{approvalChannel\}\}/g, () => approvalChannel);
   return sub(sub(tpl));
 }
 
@@ -4907,20 +5644,20 @@ function renderRepeater(step, field){
   if(!Array.isArray(val)) val = [];
   if(val.length===0) val = [{}];
   // Ensure each row has all nested fields
-  const nestedFields = field.fields||[];
+  const nestedFields = field.fields || field.itemFields || [];
   val = val.map(row=>{
-    const r = {};
+    const r = {...row};
     nestedFields.forEach(f=>{ r[f.id] = row[f.id]!==undefined?row[f.id]:getDefault(f); });
     return r;
   });
-  state.answers[fid] = val;
+  // Rendering must not persist untouched defaults as user answers.
 
   let html = '<div class="repeater" data-fid="'+fid+'">';
   val.forEach((row, i)=>{
     html += '<div class="repeater-row" data-idx="'+i+'">';
     html += '<div class="repeater-row-head"><span class="repeater-row-title">'+esc(field.label)+' #'+(i+1)+'</span>';
     html += '<button type="button" class="repeater-remove" data-rm="'+i+'">Remove</button></div>';
-    html += '<div class="two" style="grid-template-columns:1fr 1fr">';
+    html += '<div class="two">';
     nestedFields.forEach((f, fi)=>{
       html += '<div class="field" style="margin-bottom:8px">';
       html += '<label style="font-size:12px">'+esc(f.label)+'</label>';
@@ -5049,7 +5786,7 @@ function attachFieldListeners(step){
         if(!Array.isArray(arr)) arr = [];
         if(cb.checked){ if(!arr.includes(cb.value)) arr.push(cb.value); }
         else { arr = arr.filter(v=>v!==cb.value); }
-        state.answers[fid] = arr; save();
+        delete state.skipped[step.id]; state.answers[fid] = arr; save();
         // Update label class
         cb.parentElement.classList.toggle('checked', cb.checked);
       });
@@ -5066,7 +5803,7 @@ function attachFieldListeners(step){
         const val = chip.dataset.val;
         if(arr.includes(val)){ arr = arr.filter(v=>v!==val); chip.classList.remove('active'); }
         else { arr.push(val); chip.classList.add('active'); }
-        state.answers[fid] = arr; save();
+        delete state.skipped[step.id]; state.answers[fid] = arr; save();
       };
     });
   });
@@ -5098,7 +5835,7 @@ function attachFieldListeners(step){
         const idx = parseInt(btn.dataset.rm);
         arr.splice(idx, 1);
         if(arr.length===0) arr = [{}];
-        state.answers[fid] = arr; save();
+        delete state.skipped[step.id]; state.answers[fid] = arr; save();
         renderStep();
       };
     });
@@ -5116,14 +5853,14 @@ function attachFieldListeners(step){
         if(!Array.isArray(arr)) arr = [{}];
         if(!arr[idx]) arr[idx] = {};
         arr[idx][fieldId] = inp.value;
-        state.answers[fid] = arr; save();
+        delete state.skipped[step.id]; state.answers[fid] = arr; save();
       });
       inp.addEventListener('change', ()=>{
         let arr = state.answers[fid] || [];
         if(!Array.isArray(arr)) arr = [{}];
         if(!arr[idx]) arr[idx] = {};
         arr[idx][fieldId] = inp.value;
-        state.answers[fid] = arr; save();
+        delete state.skipped[step.id]; state.answers[fid] = arr; save();
       });
     });
     // Nested toggles
@@ -5141,7 +5878,7 @@ function attachFieldListeners(step){
           const cur = arr[idx][fieldId];
           const newVal = !(cur!==undefined?cur:getDefault({type:'toggle'}));
           arr[idx][fieldId] = newVal;
-          state.answers[fid] = arr; save();
+          delete state.skipped[step.id]; state.answers[fid] = arr; save();
           sw.classList.toggle('on', newVal);
           if(label) label.textContent = newVal?'On':'Off';
         };
@@ -5162,7 +5899,7 @@ function attachFieldListeners(step){
           if(cb.checked){ if(!sub.includes(cb.value)) sub.push(cb.value); }
           else { sub = sub.filter(v=>v!==cb.value); }
           arr[idx][fieldId] = sub;
-          state.answers[fid] = arr; save();
+          delete state.skipped[step.id]; state.answers[fid] = arr; save();
           cb.parentElement.classList.toggle('checked', cb.checked);
         });
       });
@@ -5174,13 +5911,12 @@ function attachFieldListeners(step){
     btn.onclick = ()=>{
       const fid = btn.dataset.add;
       let arr = state.answers[fid] || [];
-      if(!Array.isArray(arr)) arr = [];
-      const step2 = STEPS.find(s=>s.id===step.id);
-      const field = step2.fields.find(f=>f.id===fid.split('.')[1]);
+      // An untouched repeater already displays one virtual empty row.
+      if(!Array.isArray(arr) || arr.length===0) arr = [{}];
       const newRow = {};
-      (field.fields||[]).forEach(f=>{ newRow[f.id] = getDefault(f); });
+      // Leave new rows empty until their fields are explicitly answered.
       arr.push(newRow);
-      state.answers[fid] = arr; save();
+      delete state.skipped[step.id]; state.answers[fid] = arr; save();
       renderStep();
     };
   });
@@ -5258,7 +5994,7 @@ function renderFleetStep(el){
     if(nameInput) nameInput.addEventListener('input', e=>{ agent.name = e.target.value; save(); });
     // Mission
     const missionArea = card.querySelector('.agent-mission');
-    if(missionArea) missionArea.addEventListener('input', e=>{ agent.mission = e.target.value; save(); });
+    if(missionArea) missionArea.addEventListener('input', e=>{ agent.mission = e.target.value; agent.missionEdited = true; save(); });
     // Model
     const modelSel = card.querySelector('.agent-model');
     if(modelSel) modelSel.addEventListener('change', e=>{ agent.model = e.target.value; save(); renderStep(); });
@@ -5399,11 +6135,16 @@ function renderAgentCard(agent, i, models){
 
 // === GENERATORS ===
 function genAll(){
+  const previous = exportActive;
+  exportActive = true;
+  try { return genAllContent(); } finally { exportActive = previous; }
+}
+function genAllContent(){
   if(!state.fleet || state.fleet.length===0){
     state.fleet = deriveFleet(); save();
   }
   const files = [];
-  const agents = state.fleet;
+  const agents = normalizeAgents(state.fleet);
   const fleetSlug = slugify(state.fleetName||'my-fleet');
 
   // fleet.yaml
@@ -5431,14 +6172,17 @@ function genAll(){
 
 
 function genFleetKnowledgeMd(agents){
-  const owner = state.ownerName || 'Owner';
+  return withAgentContext({tier:'fleet-visible',role:{}}, ()=>genFleetKnowledgeContent(agents));
+}
+function genFleetKnowledgeContent(agents){
+  const owner = exportOwner(exportAgent);
   const fleetName = state.fleetName || 'my-fleet';
   const cmd = agents.find(function(a){ return a.roleId==='orchestrator'; });
   const D = FLEET_DOCTRINE || {};
   // Fleet-level text belongs to no single agent, so fillVars (which needs an
   // agent + role) does not apply here. Substitute the fleet-scope vars only.
   const fv = function(s){
-    return String(s||'').replace(/\{\{ownerName\}\}/g, owner).replace(/\{\{fleetName\}\}/g, fleetName);
+    return String(s||'').replace(/\{\{ownerName\}\}/g, () => owner).replace(/\{\{fleetName\}\}/g, fleetName);
   };
   var md = '# '+fleetName+' — Fleet Knowledge\n\n';
   md += 'The single source of truth for this fleet. Agent memory stays local to each agent;\n';
@@ -5491,7 +6235,7 @@ function genFleetKnowledgeMd(agents){
 }
 
 function genFleetYaml(agents){
-  const owner = state.ownerName || 'Owner';
+  const owner = exportOwner(exportAgent);
   const tz = getStepAnswer('identity','timezone') || DEFAULT_TZ;
   const host = state.hostMachine || 'hermes-host';
   const channel = getStepAnswer('guardrails','approvalChannel') || 'discord';
@@ -5510,7 +6254,7 @@ function genFleetYaml(agents){
     yaml += '  - name: '+slugify(a.name)+'\n';
     yaml += '    role: '+a.roleId+'\n';
     yaml += '    display_name: '+yVal(a.name)+'\n';
-    yaml += '    model: '+a.model+'\n';
+    yaml += '    model: '+yVal(a.model)+'\n';
     yaml += '    provider: '+modelProvider(a.model)+'\n';
     yaml += '    tier: '+a.tier+'\n';
     yaml += '    schedule: '+(a.schedule?yVal(a.schedule):'null')+'\n';
@@ -5576,8 +6320,9 @@ function genFleetYaml(agents){
   return yaml;
 }
 
-function genProfileYaml(agent){
-  const desc = fillVars(agent.mission||agent.role.description, agent);
+function genProfileYaml(agent){ return withAgentContext(agent, genProfileYamlContent); }
+function genProfileYamlContent(agent){
+  const desc = fillVars(exportMission(agent), agent);
   let yaml = '# Profile: '+agent.name+'\n';
   yaml += 'description: '+yVal(desc)+'\n';
   yaml += 'description_auto: false\n';
@@ -5591,11 +6336,12 @@ function isCommandProfile(agent){ return agent && agent.roleId === 'orchestrator
 // Channels that can reach the outside world. Only the command profile gets these keys.
 const EXTERNAL_CHANNEL_TOOLS = ['discord','telegram','slack','email','social-media'];
 
-function genConfigYaml(agent){
+function genConfigYaml(agent){ return withAgentContext(agent, genConfigYamlContent); }
+function genConfigYamlContent(agent){
   const baseUrl = modelBaseUrl(agent.model);
   let yaml = '# Config for '+agent.name+'\n';
   yaml += 'model:\n';
-  yaml += '  default: '+agent.model+'\n';
+  yaml += '  default: '+yVal(agent.model)+'\n';
   yaml += '  provider: '+modelProvider(agent.model)+'\n';
   yaml += '  base_url: '+yVal(baseUrl)+'\n';
   yaml += 'agent:\n';
@@ -5640,9 +6386,10 @@ function genConfigYaml(agent){
   const emb = getStepAnswer('memory','embeddingProvider');
   if(emb && emb!=='none') yaml += '  embeddings: '+emb+'\n';
   // Shared truth lives in the fleet knowledge layer; local memory stays local.
-  yaml += '  shared_knowledge: FLEET-KNOWLEDGE.md\n';
+  yaml += '  shared_knowledge: ../../FLEET-KNOWLEDGE.md\n';
   const kn = getStepAnswer('memory','knowledgeSources') || [];
-  if(kn.length){
+  const knowledgePaths = (getStepAnswer('memory','knowledgePaths') || []).filter(p=>p && p.path);
+  if(kn.length || knowledgePaths.length){
     yaml += 'knowledge:\n';
     yaml += '  read_only: '+(getStepAnswer('memory','knowledgeReadOnly')===false ? 'false' : 'true')+'\n';
     yaml += '  sources:\n';
@@ -5653,20 +6400,21 @@ function genConfigYaml(agent){
         if(vp) yaml += '      path: '+yVal(vp)+'\n';
       }
     });
-    (getStepAnswer('memory','knowledgePaths')||[]).forEach(function(p){
+    knowledgePaths.forEach(function(p){
       if(p && p.path){ yaml += '    - type: folder\n      path: '+yVal(p.path)+'\n      access: '+(p.access||'read')+'\n'; }
     });
   }
   return yaml;
 }
 
-function genSoulMd(agent){
+function genSoulMd(agent){ return withAgentContext(agent, genSoulMdContent); }
+function genSoulMdContent(agent){
   const soul = SOULS[agent.role.soulTemplateId];
   if(!soul) return '# '+agent.name+' SOUL\n\n(Missing soul template: '+agent.role.soulTemplateId+')\n';
 
-  const owner = state.ownerName || 'the owner';
+  const owner = exportOwner(agent);
   const D = (typeof DOCTRINE !== 'undefined' && DOCTRINE) ? DOCTRINE : {};
-  let md = '---\nstatus: provisional\nrole: '+agent.roleId+'\nname: '+agent.name+'\nmodel: '+agent.model+'\n---\n\n# '+agent.name+' SOUL\n\n';
+  let md = '---\nstatus: provisional\nrole: '+agent.roleId+'\nname: '+yVal(agent.name)+'\nmodel: '+yVal(agent.model)+'\n---\n\n# '+agent.name+' SOUL\n\n';
 
   function addSection(heading, content){
     if(!content || !String(content).trim()) return;
@@ -5687,7 +6435,7 @@ function genSoulMd(agent){
   // --- Autonomy: the hard line, built from the owner's own red-line answers ---
   const autonomy = [];
   autonomy.push('You have broad autonomy to act, with a narrow hard line.');
-  const redLines = getStepAnswer('guardrails','redLines') || [];
+  const redLines = getStepAnswer('guardrails','redLines') || ['move-money','post-publicly','email-real','delete-files','touch-offlimits','share-secrets','commit-code','sign-contracts'];
   const RED_LINE_MAP = {
     'move-money': 'moving money or making payments',
     'post-publicly': 'posting or publishing anything publicly',
@@ -5705,11 +6453,12 @@ function genSoulMd(agent){
     autonomy.push('Never without '+owner+"'s explicit approval:");
     gates.forEach(function(g){ autonomy.push('- '+g); });
   }
+  if(!stepVisibleToAgent('work', agent) || !stepVisibleToAgent('assets', agent)) autonomy.push('Private work and machine restrictions are withheld. Confirm scope with the command profile before acting.');
   autonomy.push('Everything else: if you are confident and grounded in facts, move. Do not chase permission for low-risk work.');
   addSection('Autonomy', autonomy.join('\n'));
 
   // --- Mission: role mission + the owner's actual stated goals ---
-  let mission = fillVars(soul.mission, agent);
+  let mission = fillVars(agent.missionEdited ? exportMission(agent) : soul.mission, agent);
   const topGoals = getStepAnswer('goals','topGoals') || [];
   const goalNames = topGoals
     .map(function(g){ return g && (g.goal || g.title || g.name); })
@@ -5765,7 +6514,7 @@ function genSoulMd(agent){
   else if(infoFormat === 'mixed') priv.push('Use bullets for lists, prose for reasoning.');
   if(soul.style) priv.push(fillVars(soul.style, agent));
   const petPeeves = getStepAnswer('rhythm','petPeeves');
-  if(petPeeves && String(petPeeves).trim()) priv.push('Never do this: '+String(petPeeves).trim());
+  if(petPeeves && String(petPeeves).trim()) priv.push('Additional communication instructions: '+String(petPeeves));
   let toneSection = '';
   if(priv.length) toneSection += '### Private work\n'+priv.join('\n')+'\n\n';
   toneSection += '### Public-facing work\nMatch '+owner+"'s real voice. Avoid corporate language, fake excitement, and generic thought-leadership padding.";
@@ -5783,9 +6532,10 @@ function genSoulMd(agent){
   return md.trimEnd() + '\n';
 }
 
-function genAgentsMd(agent){
+function genAgentsMd(agent){ return withAgentContext(agent, genAgentsMdContent); }
+function genAgentsMdContent(agent){
   const role = agent.role;
-  const owner = state.ownerName || 'Owner';
+  const owner = exportOwner(exportAgent);
   let md = '# '+agent.name+' Operating Context\n\n';
   md += 'Profile role: '+fillVars(role.description, agent)+'\n\n';
   md += 'Allowed scope:\n';
@@ -5852,7 +6602,8 @@ const TOOL_ENV = {
   'web-search': ['EXA_API_KEY'],
 };
 
-function genEnvExample(agent){
+function genEnvExample(agent){ return withAgentContext(agent, genEnvExampleContent); }
+function genEnvExampleContent(agent){
   const provider = modelProvider(agent.model);
   let lines = ['# Environment configuration for '+agent.name];
   lines.push('# Copy this file to .env and fill in your API keys.');
@@ -5860,7 +6611,7 @@ function genEnvExample(agent){
   lines.push('# Key NAMES only — never enter actual secret values here.\n');
   const keys = new Set();
   if(PROVIDER_ENV[provider]) PROVIDER_ENV[provider].forEach(k=>keys.add(k));
-  (agent.tools||[]).forEach(t=>{
+  (isCommandProfile(agent) ? (agent.tools||[]) : []).forEach(t=>{
     if(TOOL_ENV[t]) TOOL_ENV[t].forEach(k=>keys.add(k));
   });
   // Only the command profile holds outward-facing channel credentials.
@@ -5884,9 +6635,9 @@ function genEnvExample(agent){
     const e = (list||[]).find(function(x){ return x.id===id; });
     if(e && e.envKeys) e.envKeys.forEach(function(k){ keys.add(k); });
   };
-  addFrom(MEMC.backends, memBackend);
+  if(isCmd) addFrom(MEMC.backends, memBackend);
   addFrom(MEMC.embeddings, memEmb);
-  memKn.forEach(function(k){ addFrom(MEMC.knowledge, k); });
+  if(isCmd) memKn.forEach(function(k){ addFrom(MEMC.knowledge, k); });
   keys.forEach(k=>{ lines.push(k+'='); });
   if(!isCmd){
     lines.push('');
@@ -5896,7 +6647,8 @@ function genEnvExample(agent){
   return lines.join('\n')+'\n';
 }
 
-function genCronJson(agent){
+function genCronJson(agent){ return withAgentContext(agent, genCronJsonContent); }
+function genCronJsonContent(agent){
   const slug = slugify(agent.name);
   return JSON.stringify({
     name: slug,
@@ -5909,27 +6661,54 @@ function genCronJson(agent){
     skills: [],
     deliver: null,
     repeat: { times: null, completed: 0 },
-    state: 'scheduled',
-    enabled: true
-  }, null, 2);
+    state: 'disabled',
+    enabled: false
+  }, null, 2)+'\n';
 }
 
-function genUserMd(agent){
-  const owner = state.ownerName || 'Owner';
+function formatContextValue(field, value){
+  if(value===undefined || value===null) return '';
+  const nested = field.fields || field.itemFields || [];
+  if(Array.isArray(value)){
+    if(field.type==='repeater'){
+      const rows = value.map(row=>{
+        if(!row || typeof row!=='object' || Array.isArray(row)) return '';
+        return nested.map(sub=>{
+          const answer = formatContextValue(sub, row[sub.id]);
+          return answer ? '- '+sub.label+': '+answer.replace(/\n/g,'\n  ') : '';
+        }).filter(Boolean).join('\n');
+      }).filter(Boolean);
+      return rows.map((row,index)=>'Entry '+(index+1)+'\n'+row).join('\n\n');
+    }
+    return value.map(item=>formatContextValue({...field,type:'text'},item)).filter(Boolean).join(', ');
+  }
+  if(typeof value==='object') return '';
+  if(typeof value==='boolean') return value ? 'Yes' : 'No';
+  const answer = String(value).trim();
+  if(!answer) return '';
+  const option = (field.options || []).find(o=>String(o.value)===answer);
+  return option ? option.label : answer;
+}
+function genDetailedContext(agent){
+  const sections = [];
+  STEPS.forEach(step=>{
+    if(!stepVisibleToAgent(step.id,agent)) return;
+    const answers = (step.fields || []).filter(field=>field.contextExport).map(field=>{
+      const text = formatContextValue(field,getAnswer(step.id+'.'+field.id));
+      return text ? '### '+field.label+'\n'+text+'\n' : '';
+    }).filter(Boolean);
+    if(answers.length) sections.push('## '+step.title+' — Detailed Context\n\n'+answers.join('\n'));
+  });
+  return sections.length ? sections.join('\n')+'\n' : '';
+}
+function genUserMd(agent){ return withAgentContext(agent, genUserMdContent); }
+function genUserMdContent(agent){
+  const owner = exportOwner(exportAgent);
   const tier = agent.tier || agent.role.defaultTier || 'fleet-visible';
   let md = '# USER.md — Owner Context for '+agent.name+'\n\n';
   md += '> Tailored context for this agent. Sensitivity-filtered: isolated data appears only in agents granted that tier.\n\n';
 
-  // Helper: check if a step's data is visible to this agent
-  function stepVisible(stepId){
-    const step = STEPS.find(s=>s.id===stepId);
-    if(!step || !step.sensitivity) return true;
-    const stepTier = getTier(stepId);
-    if(stepTier==='fleet-visible') return true;
-    if(stepTier==='isolated') return tier==='isolated';
-    if(stepTier==='specific-agents') return tier==='isolated'; // treat as isolated
-    return true;
-  }
+  const stepVisible = stepId => stepVisibleToAgent(stepId, agent);
 
   // Owner
   md += '## Owner\n';
@@ -5961,6 +6740,8 @@ function genUserMd(agent){
       });
       md += '\n';
     }
+  }
+  if(stepVisible('work')){
     const keyPeople = getAnswer('work.keyPeople');
     if(Array.isArray(keyPeople) && keyPeople.length){
       if(!md.includes('## Key People')) md += '## Key People\n';
@@ -6059,6 +6840,7 @@ function genUserMd(agent){
     });
   }
   if(humanZone) redLinesArr.push(humanZone);
+  else if(!stepVisible('work')) redLinesArr.push('Owner-only work is withheld. Confirm scope with the command profile before acting.');
   if(redLinesArr.length){
     md += '## Red Lines\n';
     md += 'Never:\n';
@@ -6068,7 +6850,7 @@ function genUserMd(agent){
 
   // Pet peeves as Never lines
   if(petPeeves){
-    md += '## Never\n';
+    md += '## Additional communication instructions\n';
     petPeeves.split('\n').forEach(line=>{
       line = line.trim();
       if(line) md += '- '+line+'\n';
@@ -6076,75 +6858,53 @@ function genUserMd(agent){
     md += '\n';
   }
 
-  return md;
+  return md+genDetailedContext(agent);
 }
 
+function shellLiteral(value){ return "'"+String(value).replace(/'/g, "'\"'\"'")+"'"; }
 function genSetupSh(agents){
-  const fleetSlug = slugify(state.fleetName||'my-fleet');
-  let sh = '#!/usr/bin/env sh\n';
-  sh += 'set -eu\n\n';
-  sh += '# Hermes Fleet Installer — generated by Hermes SoulMate\n';
-  sh += '# Nothing leaves your page. This script writes profile files only.\n';
-  sh += '# NEVER writes .env (only .env.example). Backs up existing dirs.\n\n';
-  sh += 'HERMES_DIR="${HOME}/.hermes"\n';
-  sh += 'PROFILES_DIR="${HERMES_DIR}/profiles"\n';
-  sh += 'mkdir -p "$PROFILES_DIR"\n\n';
-  sh += 'echo "=== Installing '+fleetSlug+' fleet ==="\n';
-  sh += 'echo ""\n\n';
+  let sh = '#!/usr/bin/env sh\nset -eu\numask 077\n';
+  sh += '# Writes deployment scaffolding only. Never starts agents or schedules.\n';
+  sh += 'HERMES_DIR="${HERMES_HOME:-${HOME}/.hermes}"\n';
+  sh += 'PROFILES_DIR="$HERMES_DIR/profiles"\nmkdir -p "$PROFILES_DIR"\n';
+  sh += 'backup() {\n  if [ -e "$1" ] || [ -L "$1" ]; then\n    n=1\n    while [ -e "$1.bak.$n" ] || [ -L "$1.bak.$n" ]; do n=$((n + 1)); done\n    mv -- "$1" "$1.bak.$n"\n  fi\n}\n';
+  let serial = 0;
+  const write = (target, content) => {
+    let delim;
+    do { delim = 'SOULMATE_LITERAL_'+serial++; } while(content.split(/\r?\n/).includes(delim));
+    sh += 'cat > "'+target+'" <<'+shellLiteral(delim)+'\n'+content;
+    if(!content.endsWith('\n')) sh += '\n';
+    sh += delim+'\n';
 
+  };
+  for(const [filename, content] of [['fleet.yaml',genFleetYaml(agents)],['FLEET-KNOWLEDGE.md',genFleetKnowledgeMd(agents)],['DEPLOYMENT.md',genDeploymentMd(agents)]]){
+    sh += 'backup "$HERMES_DIR/'+filename+'"\n';
+    write('$HERMES_DIR/'+filename,content);
+  }
   agents.forEach(agent=>{
     const slug = slugify(agent.name);
-    sh += '# --- '+agent.name+' ('+agent.roleId+') ---\n';
-    sh += 'DIR="'+slug+'"\n';
-    sh += 'AGENT_DIR="$PROFILES_DIR/$DIR"\n';
-    sh += 'if [ -d "$AGENT_DIR" ]; then\n';
-    sh += '  mv "$AGENT_DIR" "${AGENT_DIR}.bak.$(date +%s)"\n';
-    sh += '  echo "  Backed up existing '+slug+' profile"\n';
-    sh += 'fi\n';
-    sh += 'mkdir -p "$AGENT_DIR"\n\n';
-
-    const files = [
-      ['profile.yaml', genProfileYaml(agent)],
-      ['config.yaml', genConfigYaml(agent)],
-      ['SOUL.md', genSoulMd(agent)],
-      ['AGENTS.md', genAgentsMd(agent)],
-      ['.env.example', genEnvExample(agent)],
-      ['USER.md', genUserMd(agent)],
-    ];
-    if(agent.schedule){
-      files.push(['cron.json', genCronJson(agent)]);
-    }
-
-    files.forEach(([fname, content])=>{
-      const delim = 'EOF_'+fname.toUpperCase().replace(/[^A-Z0-9]/g,'_')+'_'+slug.toUpperCase().replace(/[^A-Z0-9]/g,'_');
-      sh += 'cat > "$AGENT_DIR/'+fname+'" <<\''+delim+'\'\n';
-      sh += content;
-      if(!content.endsWith('\n')) sh += '\n';
-      sh += delim+'\n\n';
-    });
-
-    sh += 'echo "  Installed '+slug+' ("+agent.roleId+")"\n\n';
+    sh += 'AGENT_DIR="$PROFILES_DIR/'+slug+'"\nbackup "$AGENT_DIR"\nmkdir -p "$AGENT_DIR"\n';
+    const files = [['profile.yaml',genProfileYaml(agent)],['config.yaml',genConfigYaml(agent)],['SOUL.md',genSoulMd(agent)],['AGENTS.md',genAgentsMd(agent)],['.env.example',genEnvExample(agent)],['USER.md',genUserMd(agent)]];
+    if(agent.schedule) files.push(['cron.json',genCronJson(agent)]);
+    files.forEach(([filename,content])=>write('$AGENT_DIR/'+filename,content));
+    sh += "printf '%s\\n' "+shellLiteral('Prepared '+slug+' ('+agent.roleId+') model: '+agent.model)+'\n';
   });
-
-  sh += 'echo ""\n';
-  sh += 'echo "=== Fleet installed to $PROFILES_DIR ==="\n';
-  sh += 'echo ""\n';
-  sh += 'echo "Agents:"\n';
-  agents.forEach(a=>{
-    sh += 'echo "  - '+slugify(a.name)+' ('+a.model+')"\n';
-  });
-  sh += 'echo ""\n';
-  sh += 'echo "Next steps:"\n';
-  sh += 'echo "  1. Copy each .env.example to .env and fill in your API keys"\n';
-  sh += 'echo "  2. Review each profile SOUL.md and AGENTS.md"\n';
-  sh += 'echo "  3. Start your fleet: hermes profile '+slugify(agents[0]?agents[0].name:'chief-of-staff')+'"\n';
-  sh += 'echo ""\n';
-  sh += 'echo "WARNING: This file contains personal data. Keep it out of public repos."\n';
+  sh += "printf '%s\\n' "+shellLiteral('Scaffolding prepared. Review DEPLOYMENT.md prerequisites before any runtime use. No agents or schedules were started.')+'\n';
   return sh;
 }
 
+const DEPLOYMENT_PREREQUISITES = `This export is a deployment scaffold, not a verified Hermes runtime configuration.
+- Verify the target Hermes version and configuration schema before use.
+- Verify provider IDs and supported login methods. Model authentication may be required per profile; integration secrets belong only to the command profile. Never commit secrets.
+- Connect tools and MCP integrations explicitly; listed tools are desired capabilities, not connected services.
+- Configure knowledge paths/source IDs and verify retrieval. The shared knowledge path is relative to the profile directory (../../FLEET-KNOWLEDGE.md); verify the runtime resolves it from there.
+- Schedules are disabled. Configure skills, timezone and delivery destination, then validate registration before enabling.
+- Implement approval enforcement bound to the authenticated sender, exact action, expiry and single use; prose and token formats are not enforcement.
+- Privacy tiers filter exported content only, not runtime access. Fleet-visible data reaches all profiles; specific-agents reaches that tier and isolated profiles; isolated reaches isolated profiles only. This legacy tier model is not a per-agent ACL. Skipped sections are omitted. fleet.yaml and DEPLOYMENT.md are operator-only. FLEET-KNOWLEDGE.md is shared and filtered at fleet-visible tier.
+- Review private owner-only work and asset permissions with the command profile before granting execution scope.
+- Set HERMES_HOME explicitly for a chosen installation; otherwise the installer uses $HOME/.hermes. Existing files and profiles receive unique .bak.N backups. The installer starts nothing.`;
 function genDeploymentMd(agents){
-  const owner = state.ownerName || 'Owner';
+  const owner = exportOwner(exportAgent);
   const fleetName = state.fleetName || 'my-fleet';
   const tz = getStepAnswer('identity','timezone') || DEFAULT_TZ;
   let md = '# Deployment Spec: '+fleetName+'\n\n';
@@ -6202,9 +6962,7 @@ function genDeploymentMd(agents){
   md += './setup-fleet.sh\n';
   md += '```\n\n';
   md += 'After installation:\n';
-  md += '1. Copy each `.env.example` to `.env` and fill in API keys (never commit `.env`)\n';
-  md += '2. Review each profile `SOUL.md` and `AGENTS.md`\n';
-  md += '3. Start agents: `hermes profile <agent-name>`\n\n';
+  md += DEPLOYMENT_PREREQUISITES+'\n';
   md += '---\nGenerated by Hermes SoulMate. Nothing you typed left your browser.\n';
   return md;
 }
@@ -6212,9 +6970,11 @@ function genDeploymentMd(agents){
 // === REVIEW STEP ===
 function renderReviewStep(el){
   const files = genAll();
+  const resolvedNames = normalizeAgents(state.fleet).map(a=>a.name);
   if(state.reviewFile >= files.length) state.reviewFile = 0;
 
   let html = '<div class="privacy-warn"><b>Privacy warning:</b> The generated files contain personal data. Keep them out of public repositories. Store securely and review before sharing.</div>';
+  html += '<p><b>Export profile names:</b> '+resolvedNames.map(esc).join(', ')+'. Names are normalized and collisions receive unique suffixes.</p>';
   html += '<div class="review-grid">';
   // File tree
   html += '<div class="filetree" id="filetree">';
@@ -6301,6 +7061,7 @@ function crc32(bytes){
   return (crc ^ 0xFFFFFFFF) >>> 0;
 }
 function makeZip(files){
+  if(new Set(files.map(f=>f.name)).size!==files.length) throw new Error('Duplicate ZIP entry');
   const enc = new TextEncoder();
   const u16 = n => [n & 255, (n>>8) & 255];
   const u32 = n => [n & 255, (n>>8) & 255, (n>>16) & 255, (n>>>24) & 255];
@@ -6353,6 +7114,7 @@ document.getElementById('back').onclick = ()=>{
   if(state.currentStep>0){ goToStep(state.currentStep-1); }
 };
 document.getElementById('next').onclick = ()=>{
+  delete state.skipped[STEPS[state.currentStep].id];
   if(state.currentStep<STEPS.length-1){ goToStep(state.currentStep+1); }
   else { flash('Fleet spec ready — use the download buttons.'); }
 };

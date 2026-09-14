@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "identity.name",
+    "chapter": "Identity",
+    "title": "What should Hermes call you?",
+    "help": "A preferred name or nickname is enough.",
+    "type": "text",
+    "required": true
+  },
+  {
+    "id": "mission.purpose",
+    "chapter": "Mission & projects",
+    "title": "What is the most useful job Hermes could do for you?",
+    "help": "Describe the outcome that would make this worthwhile.",
+    "type": "textarea",
+    "required": true
+  },
+  {
+    "id": "setup.state",
+    "chapter": "Your Hermes installation",
+    "title": "Are we planning a new Hermes installation or configuring an existing one?",
+    "help": "The wizard records a setup plan. It does not install or change anything.",
+    "type": "single",
+    "options": [
+      "New installation",
+      "Existing installation",
+      "Not sure yet"
+    ]
+  },
+  {
+    "id": "setup.platform",
+    "chapter": "Your Hermes installation",
+    "title": "Where will Hermes run?",
+    "help": "Choose the target operating system, not necessarily the device running this wizard.",
+    "type": "single",
+    "options": [
+      "Linux",
+      "macOS",
+      "Windows with WSL",
+      "Container",
+      "Another platform",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "setup.location",
+    "chapter": "Your Hermes installation",
+    "title": "Which machine or environment is the target?",
+    "help": "Use a nickname or description. Keep host credentials and private network details out of this export.",
+    "type": "text"
+  },
+  {
+    "id": "setup.version",
+    "chapter": "Your Hermes installation",
+    "title": "What is already installed, and how can its version be checked?",
+    "help": "Include the known Hermes version, install location or who can verify them. It is fine to leave this unresolved.",
+    "type": "textarea"
+  },
+  {
+    "id": "setup.home",
+    "chapter": "Your Hermes installation",
+    "title": "Which HERMES_HOME directory should this installation use?",
+    "help": "Provide the intended path, or leave it unresolved until the target machine is inspected.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "setup.profile",
+    "chapter": "Your Hermes installation",
+    "title": "Which profile should be created or updated?",
+    "help": "Use a profile name, or describe the existing profile to preserve. This does not rename or create it.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "setup.terminal",
+    "chapter": "Your Hermes installation",
+    "title": "Which terminal execution environment should Hermes use?",
+    "help": "Choose the intended isolation level; the deployment agent must verify supported backends.",
+    "type": "single",
+    "depth": "deep",
+    "options": [
+      "Local host shell",
+      "Container sandbox",
+      "Remote execution environment",
+      "No terminal execution",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "setup.workdir",
+    "chapter": "Your Hermes installation",
+    "title": "What should the working directory be?",
+    "help": "Give the intended workspace path and identify anything outside its scope.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "setup.network",
+    "chapter": "Your Hermes installation",
+    "title": "What network access should tools be allowed?",
+    "help": "This is an intended boundary, not enforcement.",
+    "type": "single",
+    "depth": "deep",
+    "options": [
+      "No external network access",
+      "Only explicitly allowed destinations",
+      "General access with stated restrictions",
+      "Decide per task",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "setup.networkDetails",
+    "chapter": "Your Hermes installation",
+    "title": "Which destinations or network restrictions apply?",
+    "help": "Describe allowed services and prohibited destinations; never include secrets in URLs.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "models.provider",
+    "chapter": "Models & providers",
+    "title": "Which model providers do you want to use?",
+    "help": "Choose intended providers. Exact model availability, login methods and support must be checked against your installation.",
+    "type": "multi",
+    "options": [
+      "Nous Portal",
+      "OpenRouter",
+      "OpenAI",
+      "Anthropic",
+      "Google Gemini",
+      "xAI",
+      "Z.AI",
+      "Kimi",
+      "OpenCode",
+      "Local OpenAI-compatible service",
+      "Other provider",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "models.primary",
+    "chapter": "Models & providers",
+    "title": "What should the primary conversational model be?",
+    "help": "Give the provider and exact model ID if known. A deployment agent must check availability before applying it.",
+    "type": "text"
+  },
+  {
+    "id": "models.reasoning",
+    "chapter": "Models & providers",
+    "title": "What model should handle difficult reasoning?",
+    "help": "Give a provider/model ID and when to use it, or explicitly say to use the primary model.",
+    "type": "text"
+  },
+  {
+    "id": "models.fast",
+    "chapter": "Models & providers",
+    "title": "What model should handle quick or inexpensive tasks?",
+    "help": "Give a provider/model ID and cost limits. Leave undecided routing unresolved.",
+    "type": "text"
+  },
+  {
+    "id": "models.vision",
+    "chapter": "Models & providers",
+    "title": "What model should handle images or visual work?",
+    "help": "Give a provider/model ID, or say that visual work is not needed.",
+    "type": "text"
+  },
+  {
+    "id": "models.endpoint",
+    "chapter": "Models & providers",
+    "title": "Are there custom or local model endpoints?",
+    "help": "Give a non-secret base URL only, or say none. Never include keys, tokens or URL passwords.",
+    "type": "text"
+  },
+  {
+    "id": "models.auth",
+    "chapter": "Models & providers",
+    "title": "How should model access be authenticated?",
+    "help": "Choose the intended method. Compatibility must be checked against the installed Hermes version.",
+    "type": "single",
+    "options": [
+      "Existing provider login",
+      "API key supplied through environment variables",
+      "Local service without authentication",
+      "A mix of methods",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "models.credentialNames",
+    "chapter": "Models & providers",
+    "title": "Which environment variable names will hold model credentials?",
+    "help": "Names only, separated by spaces or commas, such as PROVIDER_API_KEY. Never paste values.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "models.budget",
+    "chapter": "Models & providers",
+    "title": "What spending and fallback rules should apply?",
+    "help": "Describe budgets, provider restrictions and what should happen when a preferred model is unavailable.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "models.customProvider",
+    "chapter": "Models & providers",
+    "title": "What is the custom provider name and non-secret endpoint?",
+    "help": "Also describe the expected API compatibility if you know it.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "models.provider",
+      "includes": "Other provider"
+    }
+  },
+  {
+    "id": "memory.services",
+    "chapter": "Memory & knowledge services",
+    "title": "Which memory and knowledge services belong in the setup?",
+    "help": "Built-in memory, external providers and knowledge sources are different things. These selections are setup intentions.",
+    "type": "multi",
+    "options": [
+      "Built-in local memory",
+      "Obsidian as a knowledge source",
+      "Search or vector index service",
+      "External memory provider",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "memory.existing",
+    "chapter": "Memory & knowledge services",
+    "title": "Which of those services already exist, and which need setting up?",
+    "help": "Name each service and its current state. Do not include service credentials.",
+    "type": "textarea"
+  },
+  {
+    "id": "memory.sources",
+    "chapter": "Memory & knowledge services",
+    "title": "Where is authoritative knowledge, and what may Hermes read or update?",
+    "help": "Describe the vaults, folders or other sources, read-only boundaries, and which source wins a conflict.",
+    "type": "textarea"
+  },
+  {
+    "id": "memory.endpoint",
+    "chapter": "Memory & knowledge services",
+    "title": "Which memory or search endpoints and provider names are intended?",
+    "help": "Use service/provider names and non-secret URLs only. Provider compatibility must be verified.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "memory.embeddingProvider",
+    "chapter": "Memory & knowledge services",
+    "title": "Will you use an embedding service, and which one?",
+    "help": "An embedding service is separate from the conversational model. Say none if it is not needed.",
+    "type": "single",
+    "options": [
+      "No embedding service",
+      "OpenAI embeddings",
+      "Local embedding service",
+      "Another embedding service",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "memory.embeddingModel",
+    "chapter": "Memory & knowledge services",
+    "title": "Which embedding model and endpoint should be used?",
+    "help": "Give exact model ID and a non-secret endpoint if known. Leave unknown details unresolved.",
+    "type": "text",
+    "when": {
+      "anyOf": [
+        {
+          "id": "memory.embeddingProvider",
+          "includes": "OpenAI embeddings"
+        },
+        {
+          "id": "memory.embeddingProvider",
+          "includes": "Local embedding service"
+        },
+        {
+          "id": "memory.embeddingProvider",
+          "includes": "Another embedding service"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory.credentialNames",
+    "chapter": "Memory & knowledge services",
+    "title": "Which environment variable names will hold memory-service credentials?",
+    "help": "Names only, separated by spaces or commas. Never include values.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "memory.retention",
+    "chapter": "Memory & knowledge services",
+    "title": "What may be retained, shared, corrected or deleted?",
+    "help": "Describe privacy boundaries and how stale or conflicting memories should be handled. These rules still need implementation and verification.",
+    "type": "textarea"
+  },
+  {
+    "id": "memory.externalProvider",
+    "chapter": "Memory & knowledge services",
+    "title": "Which external memory provider should be active?",
+    "help": "Choose one intended provider. Built-in memory and knowledge-source skills are configured separately; support must be verified.",
+    "type": "single",
+    "options": [
+      "None",
+      "Honcho",
+      "OpenViking",
+      "Mem0",
+      "Hindsight",
+      "Holographic",
+      "RetainDB",
+      "ByteRover",
+      "Supermemory",
+      "Decide later"
+    ],
+    "when": {
+      "id": "memory.services",
+      "includes": "External memory provider"
+    }
+  },
+  {
+    "id": "memory.externalEndpoint",
+    "chapter": "Memory & knowledge services",
+    "title": "What is the external memory service endpoint?",
+    "help": "Use a non-secret URL if applicable, or say provider-managed. Do not include URL passwords or tokens.",
+    "type": "text",
+    "when": {
+      "anyOf": [
+        {
+          "id": "memory.externalProvider",
+          "includes": "Honcho"
+        },
+        {
+          "id": "memory.externalProvider",
+          "includes": "OpenViking"
+        },
+        {
+          "id": "memory.externalProvider",
+          "includes": "Mem0"
+        },
+        {
+          "id": "memory.externalProvider",
+          "includes": "Hindsight"
+        },
+        {
+          "id": "memory.externalProvider",
+          "includes": "Holographic"
+        },
+        {
+          "id": "memory.externalProvider",
+          "includes": "RetainDB"
+        },
+        {
+          "id": "memory.externalProvider",
+          "includes": "ByteRover"
+        },
+        {
+          "id": "memory.externalProvider",
+          "includes": "Supermemory"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory.obsidian",
+    "chapter": "Memory & knowledge services",
+    "title": "Should Obsidian be connected as a knowledge source?",
+    "help": "Obsidian access is a knowledge-source capability, not an external memory provider.",
+    "type": "single",
+    "options": [
+      "Yes, read only",
+      "Yes, with reviewed writes",
+      "No",
+      "Not decided"
+    ],
+    "when": {
+      "id": "memory.services",
+      "includes": "Obsidian as a knowledge source"
+    }
+  },
+  {
+    "id": "memory.obsidianPath",
+    "chapter": "Memory & knowledge services",
+    "title": "Which Obsidian vault path is intended?",
+    "help": "Give the path on the target machine if known. Writes still require the separately chosen boundaries.",
+    "type": "text",
+    "when": {
+      "anyOf": [
+        {
+          "id": "memory.obsidian",
+          "includes": "Yes, read only"
+        },
+        {
+          "id": "memory.obsidian",
+          "includes": "Yes, with reviewed writes"
+        }
+      ]
+    }
+  },
+  {
+    "id": "memory.builtin",
+    "chapter": "Memory & knowledge services",
+    "title": "How should built-in memory behave?",
+    "help": "Describe whether user/profile memory is wanted, what writes need approval and any size limits. Do not copy private memories here.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "memory.searchProvider",
+    "chapter": "Memory & knowledge services",
+    "title": "Which search or index service should be used?",
+    "help": "Choose the intended service category. The agent must verify installed search skills and service support.",
+    "type": "single",
+    "depth": "deep",
+    "options": [
+      "No search service",
+      "Local full-text index",
+      "Local vector index",
+      "Hosted search service",
+      "Existing custom service",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "memory.searchEndpoint",
+    "chapter": "Memory & knowledge services",
+    "title": "Where is the selected search or index service?",
+    "help": "Provide a service name and non-secret endpoint, or describe who can verify it.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "connections.channels",
+    "chapter": "Channels, skills & profiles",
+    "title": "Which channels should Hermes use?",
+    "help": "Choosing a channel does not create a bot, send messages or grant access.",
+    "type": "multi",
+    "options": [
+      "Local terminal only",
+      "Browser or web interface",
+      "Telegram",
+      "Discord",
+      "Slack",
+      "Email",
+      "Other channel",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "connections.skills",
+    "chapter": "Channels, skills & profiles",
+    "title": "Which skills, tools or MCP services should be connected?",
+    "help": "Name the capabilities you want, what already exists, and any prohibited actions.",
+    "type": "textarea"
+  },
+  {
+    "id": "connections.profiles",
+    "chapter": "Channels, skills & profiles",
+    "title": "What bots or separate profiles do you need?",
+    "help": "Describe responsibilities, owners, channels and the context that must stay separate.",
+    "type": "textarea"
+  },
+  {
+    "id": "connections.credentialNames",
+    "chapter": "Channels, skills & profiles",
+    "title": "Which environment variable names will hold channel or tool credentials?",
+    "help": "Names only, separated by spaces or commas. The deployment agent must provision values through an approved secure method.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "connections.delivery",
+    "chapter": "Channels, skills & profiles",
+    "title": "Who should receive results and who reviews outgoing messages?",
+    "help": "Use roles or nicknames, not private account IDs. Separate draft preparation from permission to send.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "connections.browserMode",
+    "chapter": "Channels, skills & profiles",
+    "title": "How should browser work run?",
+    "help": "The deployment agent must verify the browser tool and selected user profile before use.",
+    "type": "single",
+    "depth": "deep",
+    "options": [
+      "No browser access",
+      "Dedicated automation profile",
+      "Existing named user profile",
+      "Remote browser service",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "connections.browserProfile",
+    "chapter": "Channels, skills & profiles",
+    "title": "Which browser profile or service is intended?",
+    "help": "Name the profile and allowed accounts or service endpoint; never include cookies, tokens or credentials.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "connections.mcpTransport",
+    "chapter": "Channels, skills & profiles",
+    "title": "How should MCP services connect?",
+    "help": "Transport and authentication must match each actual service.",
+    "type": "single",
+    "depth": "deep",
+    "options": [
+      "No MCP services",
+      "Local stdio services",
+      "HTTP services",
+      "A mix of stdio and HTTP",
+      "Not decided"
+    ]
+  },
+  {
+    "id": "connections.mcpEndpoints",
+    "chapter": "Channels, skills & profiles",
+    "title": "Which MCP service commands or endpoints are intended?",
+    "help": "Describe each service and allowed tools. This is reference text only; nothing will execute from this answer.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "connections.mcpScope",
+    "chapter": "Channels, skills & profiles",
+    "title": "Which tools should be included or excluded for each service?",
+    "help": "List the allowed scope, authentication owner and read-only restrictions where applicable.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "setup.routines",
+    "chapter": "Routines & setup verification",
+    "title": "Which recurring tasks belong in the initial setup?",
+    "help": "Include cadence, timezone, delivery destination, failure behavior and when each task should stop. Say none if not needed.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "setup.verification",
+    "chapter": "Routines & setup verification",
+    "title": "What tests will prove this setup works?",
+    "help": "Consider a model response, memory write/read, source retrieval, bot reply, approval boundary and recovery check.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "setup.recovery",
+    "chapter": "Routines & setup verification",
+    "title": "What should be backed up before applying changes?",
+    "help": "Identify the owner and recovery procedure. The handoff must verify the target installation before writing.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "setup.backupTarget",
+    "chapter": "Routines & setup verification",
+    "title": "Where should the pre-change backup be stored?",
+    "help": "Provide a target path or storage description and who controls restoration.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "identity.context",
+    "chapter": "Identity",
+    "title": "What should Hermes understand about your life right now?",
+    "help": "Share useful context, not a biography. Leave out anything you want to keep private.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "identity.values",
+    "chapter": "Identity",
+    "title": "What values should guide the way Hermes helps you?",
+    "help": "Describe a principle you want reflected in everyday decisions.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "identity.roles",
+    "chapter": "Identity",
+    "title": "Which roles are you balancing?",
+    "help": "For example, running a business, studying, parenting or caring for someone.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "identity.accessibility",
+    "chapter": "Identity",
+    "title": "What would make this relationship easier to use?",
+    "help": "You can describe reading, hearing, movement, attention or language preferences without explaining a diagnosis.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "identity.private",
+    "chapter": "Identity",
+    "title": "What personal context should remain outside this profile?",
+    "help": "Describe categories or boundaries; do not include the private material itself.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "relationship.style",
+    "chapter": "Working relationship",
+    "title": "How should Hermes feel to work with?",
+    "help": "Choose the closest starting point. You can add your own description later.",
+    "type": "single",
+    "options": [
+      "Direct and concise",
+      "Warm and conversational",
+      "Calm and methodical",
+      "Formal and precise"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "relationship.challenge",
+    "chapter": "Working relationship",
+    "title": "How should Hermes challenge your thinking?",
+    "help": "Disagreement should help you make better decisions. Choose your preferred approach.",
+    "type": "single",
+    "options": [
+      "Flag important concerns directly",
+      "Ask questions before disagreeing",
+      "Offer alternatives with evidence",
+      "Keep challenges brief and practical"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "relationship.personality",
+    "chapter": "Working relationship",
+    "title": "What personality would make Hermes a good fit?",
+    "help": "Describe the voice, energy and traits you want. Avoid assuming personality grants decision-making authority.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "relationship.avoid",
+    "chapter": "Working relationship",
+    "title": "What assistant habits frustrate you?",
+    "help": "Specific examples are useful: repeated questions, hype, vague claims or excessive detail.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "relationship.uncertainty",
+    "chapter": "Working relationship",
+    "title": "How should Hermes communicate uncertainty?",
+    "help": "Say when you want a best estimate, a source check, or a pause for clarification.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "relationship.initiative",
+    "chapter": "Working relationship",
+    "title": "Where would you welcome initiative, and where should Hermes ask first?",
+    "help": "Give concrete examples. This answer records your intent; it does not connect tools or enforce permissions.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "mission.interests",
+    "chapter": "Mission & projects",
+    "title": "Where would you like help?",
+    "help": "These choices guide later questions. Selecting an area does not grant permission to act.",
+    "type": "multi",
+    "options": [
+      "Work and projects",
+      "Research and learning",
+      "Creative work",
+      "Home and family",
+      "Health and routines",
+      "Travel"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "mission.projects",
+    "chapter": "Mission & projects",
+    "title": "What active project should Hermes understand first?",
+    "help": "Include the desired result, current stage, next milestone and anything blocking progress.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "mission.success",
+    "chapter": "Mission & projects",
+    "title": "How will you know this relationship is working?",
+    "help": "Name an observable result and a reasonable review point.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "mission.priority",
+    "chapter": "Mission & projects",
+    "title": "How should competing priorities be weighed?",
+    "help": "Describe deadlines, commitments and what can wait.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "mission.constraints",
+    "chapter": "Mission & projects",
+    "title": "What constraints should shape the work?",
+    "help": "Include time, budget, dependencies or commitments without disclosing account details.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "knowledge.authority",
+    "chapter": "Knowledge & memory",
+    "title": "Which sources should Hermes treat as authoritative?",
+    "help": "Name the files, people or systems that settle questions. Paths are optional; never include login details.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "knowledge.boundaries",
+    "chapter": "Knowledge & memory",
+    "title": "What should Hermes remember, and what should it avoid retaining?",
+    "help": "These are requested handling rules, not a guarantee of storage or deletion enforcement.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "knowledge.stale",
+    "chapter": "Knowledge & memory",
+    "title": "How should Hermes handle old or conflicting information?",
+    "help": "Describe which source wins, how conflicts should be shown and when to ask you.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "knowledge.evidence",
+    "chapter": "Knowledge & memory",
+    "title": "What evidence do you expect from research?",
+    "help": "Describe acceptable sources, citations, freshness and how facts should be separated from inference.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Research and learning"
+    }
+  },
+  {
+    "id": "knowledge.scope",
+    "chapter": "Knowledge & memory",
+    "title": "Which knowledge belongs to a project, a person or the whole team?",
+    "help": "Set context boundaries without copying private records into the interview.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "knowledge.review",
+    "chapter": "Knowledge & memory",
+    "title": "How should remembered information be reviewed or retired?",
+    "help": "Say who can correct it, how changes should be recorded and when outdated context should stop being used.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "tools.interest",
+    "chapter": "Tools & access",
+    "title": "Which kinds of tools might be useful?",
+    "help": "This is a wish list, not a connection or access grant.",
+    "type": "multi",
+    "options": [
+      "Browser",
+      "Files and notes",
+      "Email or messaging",
+      "Calendar",
+      "Code and development",
+      "Home devices",
+      "No tools for now"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "tools.boundaries",
+    "chapter": "Tools & access",
+    "title": "What actions need your explicit approval?",
+    "help": "Name actions and limits in plain English. Do not enter passwords, keys, account numbers or approval secrets.",
+    "type": "textarea"
+  },
+  {
+    "id": "tools.browser",
+    "chapter": "Tools & access",
+    "title": "Which browser profile or accounts may be used, and for what?",
+    "help": "Describe scope and off-limits areas. Do not supply credentials or session tokens.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "tools.interest",
+      "includes": "Browser"
+    }
+  },
+  {
+    "id": "tools.files",
+    "chapter": "Tools & access",
+    "title": "Which files may Hermes read or change?",
+    "help": "Name intended folders and read-only areas. Include any material that must never be accessed.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "tools.interest",
+      "includes": "Files and notes"
+    }
+  },
+  {
+    "id": "tools.messages",
+    "chapter": "Tools & access",
+    "title": "Who may be contacted, through which channel, and when must a draft be reviewed?",
+    "help": "Use roles or nicknames rather than private contact details. A recorded preference does not send a message.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "tools.interest",
+      "includes": "Email or messaging"
+    }
+  },
+  {
+    "id": "tools.revocation",
+    "chapter": "Tools & access",
+    "title": "How should access be checked, limited and withdrawn?",
+    "help": "Describe the owner of access decisions and what should happen when scope is unclear.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "team.structure",
+    "chapter": "Team & models",
+    "title": "What kind of assistant team would you prefer?",
+    "help": "This records a preference; no agents or model services are created.",
+    "type": "single",
+    "options": [
+      "One general assistant",
+      "A coordinator with specialists",
+      "A small set of independent specialists",
+      "Decide after trying the basics"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "team.cost",
+    "chapter": "Team & models",
+    "title": "What cost limits should guide model and tool use?",
+    "help": "Give a budget or a rule for asking before paid work. It is fine to say this is undecided.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "team.specialists",
+    "chapter": "Team & models",
+    "title": "Which specialist roles would earn a permanent place?",
+    "help": "Describe responsibilities and when a temporary helper would be enough.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "team.routing",
+    "chapter": "Team & models",
+    "title": "How should work be routed between fast, inexpensive and more capable models?",
+    "help": "Describe examples, escalation points and any providers you want excluded.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "team.context",
+    "chapter": "Team & models",
+    "title": "What context may a specialist or temporary helper receive?",
+    "help": "Set limits on shared history, private sources and credentials. Do not include the secrets themselves.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "team.handoffs",
+    "chapter": "Team & models",
+    "title": "What should a useful handoff contain?",
+    "help": "Consider the task, evidence, decisions, unfinished work and who remains responsible.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "routines.cadence",
+    "chapter": "Routines",
+    "title": "When would regular help be useful?",
+    "help": "Choose a starting rhythm. This does not schedule anything.",
+    "type": "single",
+    "options": [
+      "Only when I ask",
+      "Daily check-in",
+      "Weekly review",
+      "A few specific recurring tasks"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "routines.timezone",
+    "chapter": "Routines",
+    "title": "What timezone and quiet hours should be used?",
+    "help": "Name a timezone explicitly if timed work matters. Leave uncertain timing unresolved.",
+    "type": "text",
+    "depth": "deep"
+  },
+  {
+    "id": "routines.automation",
+    "chapter": "Routines",
+    "title": "Describe one recurring task worth automating.",
+    "help": "Include its trigger, cadence, expected result and the actions that still need approval.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "routines.delivery",
+    "chapter": "Routines",
+    "title": "Where should recurring results be delivered?",
+    "help": "Describe the destination and recipient by role or nickname; avoid private contact information.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "routines.failure",
+    "chapter": "Routines",
+    "title": "What should happen when a routine fails or has nothing useful to report?",
+    "help": "Describe retries, escalation, quiet periods and what merits an alert.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "routines.retirement",
+    "chapter": "Routines",
+    "title": "When should a routine stop or be reviewed?",
+    "help": "Include an expiry, completion condition or review owner so old automations do not linger.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "communication.format",
+    "chapter": "Communication",
+    "title": "What makes an answer easy for you to use?",
+    "help": "Choose the format you generally prefer.",
+    "type": "single",
+    "options": [
+      "Brief answer first, details when useful",
+      "Step-by-step explanation",
+      "A clear recommendation with evidence",
+      "Options and tradeoffs"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "communication.urgent",
+    "chapter": "Communication",
+    "title": "What deserves an interruption?",
+    "help": "Describe genuine urgency, the channel you prefer and situations that should wait.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "communication.examples",
+    "chapter": "Communication",
+    "title": "Show or describe a response style that works for you.",
+    "help": "You can use a short example you wrote; do not paste private correspondence.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "communication.checkins",
+    "chapter": "Communication",
+    "title": "How should Hermes keep you informed during longer work?",
+    "help": "Describe useful milestones and how often updates become distracting.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "communication.audience",
+    "chapter": "Communication",
+    "title": "How should the voice change for different audiences?",
+    "help": "Distinguish communication with you from drafts intended for other people.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "communication.badnews",
+    "chapter": "Communication",
+    "title": "How should setbacks and mistakes be reported?",
+    "help": "Say what evidence, explanation and proposed next step you need.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "creative.role",
+    "chapter": "Creative work",
+    "title": "Would you like creative help in this relationship?",
+    "help": "A simple starting preference is enough.",
+    "type": "single",
+    "options": [
+      "Yes, regularly",
+      "Sometimes",
+      "Not a priority"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "creative.standards",
+    "chapter": "Creative work",
+    "title": "What makes work feel like yours?",
+    "help": "Describe qualities to preserve, references you like or things that make work feel generic.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "creative.outputs",
+    "chapter": "Creative work",
+    "title": "What creative outputs do you want help producing?",
+    "help": "Describe formats, audience and where the work will be used.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Creative work"
+    }
+  },
+  {
+    "id": "creative.voice",
+    "chapter": "Creative work",
+    "title": "What should guide your public voice?",
+    "help": "Describe tone, themes and topics that should be avoided.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Creative work"
+    }
+  },
+  {
+    "id": "creative.review",
+    "chapter": "Creative work",
+    "title": "How should drafts be reviewed before publication?",
+    "help": "Name the approval owner and what evidence would show the final version is ready.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Creative work"
+    }
+  },
+  {
+    "id": "creative.sources",
+    "chapter": "Creative work",
+    "title": "What source material and rights should creative work respect?",
+    "help": "Describe permitted references and attribution requirements without copying restricted material.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Creative work"
+    }
+  },
+  {
+    "id": "personal.scope",
+    "chapter": "Home & personal",
+    "title": "How much personal context should Hermes handle?",
+    "help": "You can keep this entirely work-focused.",
+    "type": "single",
+    "options": [
+      "Work only",
+      "Limited practical preferences",
+      "Home and family coordination",
+      "Broader personal support"
+    ],
+    "depth": "deep"
+  },
+  {
+    "id": "personal.boundaries",
+    "chapter": "Home & personal",
+    "title": "What personal boundaries should always be respected?",
+    "help": "Describe categories of information or decisions that should remain private or human-led.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "personal.family",
+    "chapter": "Home & personal",
+    "title": "What is shared family context, and what belongs to one person?",
+    "help": "Use roles or nicknames and describe who may see what. Do not include private records.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Home and family"
+    }
+  },
+  {
+    "id": "personal.home",
+    "chapter": "Home & personal",
+    "title": "What home-related actions would need separate permission?",
+    "help": "Distinguish reminders and suggestions from purchases, bookings or device changes.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Home and family"
+    }
+  },
+  {
+    "id": "personal.routines",
+    "chapter": "Home & personal",
+    "title": "What everyday routines would you like help remembering?",
+    "help": "Share preferences and reminder needs only; no diagnoses, medication details or health records are needed.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Health and routines"
+    }
+  },
+  {
+    "id": "personal.travel",
+    "chapter": "Home & personal",
+    "title": "What travel preferences should guide research?",
+    "help": "Describe comfort, pace, accessibility and constraints. Research interest is not permission to book.",
+    "type": "textarea",
+    "depth": "deep",
+    "when": {
+      "id": "mission.interests",
+      "includes": "Travel"
+    }
+  },
+  {
+    "id": "reliability.proof",
+    "chapter": "Reliability & boundaries",
+    "title": "What proof should Hermes provide before calling a task complete?",
+    "help": "Give examples of a result you could verify, including when a test or receipt is needed.",
+    "type": "textarea"
+  },
+  {
+    "id": "reliability.stop",
+    "chapter": "Reliability & boundaries",
+    "title": "When should Hermes stop and return control to you?",
+    "help": "Describe uncertainty, conflicting instructions, unexpected effects or other hard stopping points.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "reliability.backups",
+    "chapter": "Reliability & boundaries",
+    "title": "What needs a backup before changes, and how should recovery be checked?",
+    "help": "Describe the owner, location category and proof of recovery without exposing sensitive paths.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "reliability.errors",
+    "chapter": "Reliability & boundaries",
+    "title": "How should mistakes be corrected and learned from?",
+    "help": "Describe evidence to preserve, who should be told and which lessons should become reusable guidance.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "reliability.audit",
+    "chapter": "Reliability & boundaries",
+    "title": "What should a later reviewer be able to reconstruct?",
+    "help": "Consider sources, approvals, actions, changed files and unresolved questions.",
+    "type": "textarea",
+    "depth": "deep"
+  },
+  {
+    "id": "reliability.unresolved",
+    "chapter": "Reliability & boundaries",
+    "title": "What important decision have we not settled?",
+    "help": "Keep unknowns visible rather than filling them with defaults.",
+    "type": "textarea",
+    "depth": "deep"
+  }
+]

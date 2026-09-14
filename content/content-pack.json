@@ -315,6 +315,27 @@
               "default": "1week"
             }
           ]
+        },
+        {
+          "id": "personalValues",
+          "type": "textarea",
+          "label": "What values should guide your agents?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "decisionStyle",
+          "type": "textarea",
+          "label": "How do you prefer to make decisions?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "accessibilityPreferences",
+          "type": "textarea",
+          "label": "What makes information easier to use?",
+          "required": false,
+          "contextExport": true
         }
       ]
     },
@@ -655,8 +676,23 @@
                 }
               ],
               "default": "never"
+            },
+            {
+              "id": "audience",
+              "type": "text",
+              "label": "Intended audience",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "objective",
+              "type": "text",
+              "label": "What do you want this account to achieve?",
+              "required": false,
+              "contextExport": true
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "emailAccounts",
@@ -1259,7 +1295,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "knowledgeReadOnly",
@@ -1311,6 +1348,29 @@
           "label": "Anything else about how your notes are organised?",
           "help": "Optional. Folder conventions, naming, what to ignore.",
           "rows": 3
+        },
+        {
+          "id": "trustedSources",
+          "type": "textarea",
+          "label": "Which sources do you trust?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "rememberPreferences",
+          "type": "textarea",
+          "label": "What would you like agents to remember?",
+          "required": false,
+          "contextExport": true,
+          "help": "Guidance for your agents; this does not guarantee how a connected runtime stores or deletes information."
+        },
+        {
+          "id": "doNotRetain",
+          "type": "textarea",
+          "label": "What should agents avoid retaining?",
+          "required": false,
+          "contextExport": true,
+          "help": "Guidance for your agents; this does not guarantee how a connected runtime stores or deletes information."
         }
       ]
     },
@@ -1319,7 +1379,7 @@
       "title": "Work & Business",
       "intro": "Your career and business context help your fleet support your actual work.",
       "skippable": true,
-      "sensitivity": false,
+      "sensitivity": true,
       "fields": [
         {
           "id": "roles",
@@ -1566,6 +1626,20 @@
           "label": "The Human-Only Zone",
           "help": "Tasks your fleet should NEVER touch — be specific.",
           "placeholder": "Never draft communications to my board. Never touch legal documents."
+        },
+        {
+          "id": "idealCustomer",
+          "type": "textarea",
+          "label": "Who is your ideal customer or audience?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "businessPriorities",
+          "type": "textarea",
+          "label": "What matters most in your work right now?",
+          "required": false,
+          "contextExport": true
         }
       ]
     },
@@ -1607,8 +1681,51 @@
                 }
               ],
               "default": "medium"
+            },
+            {
+              "id": "deadline",
+              "type": "text",
+              "label": "Target date",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "successMeasure",
+              "type": "text",
+              "label": "How will you measure success?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "currentBaseline",
+              "type": "text",
+              "label": "Where are you starting?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "nextMilestone",
+              "type": "text",
+              "label": "Next milestone",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "obstacle",
+              "type": "text",
+              "label": "Main obstacle",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "timeAvailable",
+              "type": "text",
+              "label": "Time available",
+              "required": false,
+              "contextExport": true
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "monitorDomains",
@@ -1702,28 +1819,32 @@
               "label": "Remind Me",
               "default": true
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "familyLogistics",
           "type": "textarea",
           "label": "Family Logistics",
           "help": "School runs, activities, coordination needs.",
-          "placeholder": "Kids' soccer practice Tuesdays, grocery pickup Fridays"
+          "placeholder": "Kids' soccer practice Tuesdays, grocery pickup Fridays",
+          "contextExport": true
         },
         {
           "id": "travel",
           "type": "textarea",
           "label": "Travel Plans",
           "help": "Upcoming trips for planning support.",
-          "placeholder": "Considering Italy in September, weekend trips quarterly"
+          "placeholder": "Considering Italy in September, weekend trips quarterly",
+          "contextExport": true
         },
         {
           "id": "homeProjects",
           "type": "textarea",
           "label": "Home Projects",
           "help": "Renovations, repairs, improvements.",
-          "placeholder": "Kitchen remodel Q3, paint garage"
+          "placeholder": "Kitchen remodel Q3, paint garage",
+          "contextExport": true
         },
         {
           "id": "moneyContext",
@@ -1773,7 +1894,8 @@
               "type": "text",
               "label": "Details"
             }
-          ]
+          ],
+          "contextExport": true
         },
         {
           "id": "subscriptionAudit",
@@ -1781,8 +1903,496 @@
           "label": "Interested in Subscription Audit",
           "help": "Your fleet can track and optimize recurring costs.",
           "default": false
+        },
+        {
+          "id": "nearTermFocus",
+          "type": "textarea",
+          "label": "What matters over the next few weeks?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "successDefinition",
+          "type": "textarea",
+          "label": "What would success look like?",
+          "required": false,
+          "contextExport": true
         }
       ]
+    },
+    {
+      "id": "projects",
+      "title": "Projects & Workflows",
+      "intro": "Optional: tell your agents what is underway and how recurring work gets done.",
+      "fields": [
+        {
+          "id": "activeProjects",
+          "type": "repeater",
+          "label": "Active projects",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "name",
+              "type": "text",
+              "label": "Name",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "outcome",
+              "type": "text",
+              "label": "Desired outcome",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "deadline",
+              "type": "text",
+              "label": "Target date",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "status",
+              "type": "text",
+              "label": "Current status",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "nextAction",
+              "type": "text",
+              "label": "Next action",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "blocker",
+              "type": "text",
+              "label": "What is blocking progress?",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "recurringWorkflows",
+          "type": "repeater",
+          "label": "Recurring workflows",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "name",
+              "type": "text",
+              "label": "Name",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "trigger",
+              "type": "text",
+              "label": "What starts it?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "frequency",
+              "type": "text",
+              "label": "How often?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "currentTools",
+              "type": "text",
+              "label": "Current tools",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "desiredOutput",
+              "type": "text",
+              "label": "Desired output",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "doneWhen",
+              "type": "text",
+              "label": "How do you know it is done?",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "priorityRules",
+          "type": "textarea",
+          "label": "How should competing priorities be handled?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "workingConstraints",
+          "type": "textarea",
+          "label": "What limits your working time or options?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "deliverablePreferences",
+          "type": "textarea",
+          "label": "What makes a useful finished result?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "followUpRules",
+          "type": "textarea",
+          "label": "How should unfinished work be followed up?",
+          "required": false,
+          "contextExport": true
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
+    },
+    {
+      "id": "content",
+      "title": "Content & Audience",
+      "intro": "Optional: describe your audience, voice and publishing preferences. This guidance does not authorize posting.",
+      "fields": [
+        {
+          "id": "audience",
+          "type": "textarea",
+          "label": "Who do you want to reach?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "contentPillars",
+          "type": "repeater",
+          "label": "Content themes",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "topic",
+              "type": "text",
+              "label": "Topic",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "purpose",
+              "type": "text",
+              "label": "Purpose",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "voiceExamples",
+          "type": "textarea",
+          "label": "Examples of your voice",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "avoidTopics",
+          "type": "textarea",
+          "label": "Topics or language to avoid",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "publishingPlan",
+          "type": "repeater",
+          "label": "Publishing preferences",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "platform",
+              "type": "text",
+              "label": "Platform",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "formats",
+              "type": "text",
+              "label": "Formats",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "cadence",
+              "type": "text",
+              "label": "How often?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "reviewProcess",
+              "type": "text",
+              "label": "Review before publishing",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "successMeasures",
+          "type": "textarea",
+          "label": "How will you judge content results?",
+          "required": false,
+          "contextExport": true
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
+    },
+    {
+      "id": "wellbeing",
+      "title": "Health & Wellbeing",
+      "intro": "Optional preferences and reminder context. Share only what you are comfortable sharing; no medical records or clinical details are needed.",
+      "fields": [
+        {
+          "id": "supportGoals",
+          "type": "textarea",
+          "label": "What everyday wellbeing support would help?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "routines",
+          "type": "repeater",
+          "label": "Routines you want help remembering",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "activity",
+              "type": "text",
+              "label": "Activity",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "schedule",
+              "type": "text",
+              "label": "When?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "supportWanted",
+              "type": "text",
+              "label": "Support wanted",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "sleepPreferences",
+          "type": "textarea",
+          "label": "Sleep and rest preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "foodPreferences",
+          "type": "textarea",
+          "label": "Food preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "activityPreferences",
+          "type": "textarea",
+          "label": "Activity preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "trackingSources",
+          "type": "repeater",
+          "label": "Things you choose to track",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "source",
+              "type": "text",
+              "label": "Source name (no login details)",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "whatToTrack",
+              "type": "text",
+              "label": "What to track",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "reviewFrequency",
+              "type": "text",
+              "label": "Review frequency",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "Family & Lifestyle",
+      "intro": "Optional: describe everyday responsibilities, interests and the support you would find useful.",
+      "fields": [
+        {
+          "id": "familyResponsibilities",
+          "type": "repeater",
+          "label": "Family responsibilities",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "responsibility",
+              "type": "text",
+              "label": "Responsibility",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "person",
+              "type": "text",
+              "label": "Who is involved? (a nickname is enough)",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "schedule",
+              "type": "text",
+              "label": "When?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "supportWanted",
+              "type": "text",
+              "label": "Support wanted",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "travelPreferences",
+          "type": "textarea",
+          "label": "Travel preferences",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "leisureInterests",
+          "type": "textarea",
+          "label": "Interests and leisure",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "learningGoals",
+          "type": "repeater",
+          "label": "Things you want to learn",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "topic",
+              "type": "text",
+              "label": "Topic",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "level",
+              "type": "text",
+              "label": "Current level",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "preferredFormat",
+              "type": "text",
+              "label": "Preferred way to learn",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "timeAvailable",
+              "type": "text",
+              "label": "Time available",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "householdRoutines",
+          "type": "repeater",
+          "label": "Household routines",
+          "required": false,
+          "contextExport": true,
+          "fields": [
+            {
+              "id": "task",
+              "type": "text",
+              "label": "Task",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "frequency",
+              "type": "text",
+              "label": "How often?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "owner",
+              "type": "text",
+              "label": "Who handles it?",
+              "required": false,
+              "contextExport": true
+            },
+            {
+              "id": "reminder",
+              "type": "text",
+              "label": "Reminder preferences",
+              "required": false,
+              "contextExport": true
+            }
+          ]
+        },
+        {
+          "id": "personalBoundaries",
+          "type": "textarea",
+          "label": "Personal boundaries",
+          "required": false,
+          "contextExport": true
+        }
+      ],
+      "skippable": true,
+      "sensitivity": true
     },
     {
       "id": "guardrails",
@@ -2102,6 +2712,20 @@
           "label": "Pet Peeves",
           "help": "Things your fleet should NEVER do.",
           "placeholder": "Don't repeat yourself. Don't ask for permission on trivial things. No hype."
+        },
+        {
+          "id": "urgentAlerts",
+          "type": "textarea",
+          "label": "What deserves an urgent alert?",
+          "required": false,
+          "contextExport": true
+        },
+        {
+          "id": "checkInPreferences",
+          "type": "textarea",
+          "label": "How would you like agents to check in?",
+          "required": false,
+          "contextExport": true
         }
       ]
     },
@@ -2745,10 +3369,18 @@
           {
             "field": "goals.health",
             "minCount": 1
+          },
+          {
+            "field": "wellbeing.supportGoals",
+            "minCount": 1
+          },
+          {
+            "field": "wellbeing.routines",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You listed health details — a health companion keeps you on track with reminders."
+      "reason": "You described wellbeing support or routines — a companion can help organize reminders."
     },
     {
       "roleId": "family-ops",
@@ -2761,10 +3393,18 @@
           {
             "field": "goals.familyLogistics",
             "truthy": true
+          },
+          {
+            "field": "lifestyle.familyResponsibilities",
+            "minCount": 1
+          },
+          {
+            "field": "lifestyle.householdRoutines",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You have household members or family logistics — family ops keeps everyone coordinated."
+      "reason": "You described household or family responsibilities — family ops can help coordinate them."
     },
     {
       "roleId": "home-maintenance",
@@ -2789,10 +3429,22 @@
           {
             "field": "work.grindList",
             "includes": "content-creation"
+          },
+          {
+            "field": "content.audience",
+            "minCount": 1
+          },
+          {
+            "field": "content.contentPillars",
+            "minCount": 1
+          },
+          {
+            "field": "content.publishingPlan",
+            "minCount": 1
           }
         ]
       },
-      "reason": "Content creation is on your grind list — a publisher drafts for your review."
+      "reason": "You described content work — a publisher can prepare drafts for your review."
     },
     {
       "roleId": "social-media",
@@ -2801,10 +3453,14 @@
           {
             "field": "assets.socialAccounts",
             "minCount": 1
+          },
+          {
+            "field": "content.publishingPlan",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You listed {{count}} social account(s) — social media management keeps you present without burnout."
+      "reason": "You described social accounts or publishing plans — an agent can help organize content for review."
     },
     {
       "roleId": "dev",
@@ -2837,10 +3493,26 @@
           {
             "field": "work.grindList",
             "includes": "bookkeeping"
+          },
+          {
+            "field": "projects.activeProjects",
+            "minCount": 1
+          },
+          {
+            "field": "projects.recurringWorkflows",
+            "minCount": 1
+          },
+          {
+            "field": "work.businessPriorities",
+            "minCount": 1
+          },
+          {
+            "field": "work.idealCustomer",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You have business operations — business ops streamlines workflows and reporting."
+      "reason": "You described projects or business workflows — business ops can help track progress and prepare reports."
     },
     {
       "roleId": "news-digest",
@@ -2873,10 +3545,14 @@
           {
             "field": "goals.travel",
             "truthy": true
+          },
+          {
+            "field": "lifestyle.travelPreferences",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You mentioned travel plans — a travel planner researches options without booking."
+      "reason": "You described travel preferences or plans — a planner can research options without booking."
     },
     {
       "roleId": "learning-coach",
@@ -2889,10 +3565,14 @@
           {
             "field": "work.roles",
             "includes": "student"
+          },
+          {
+            "field": "lifestyle.learningGoals",
+            "minCount": 1
           }
         ]
       },
-      "reason": "You have learning goals — a coach keeps you on track with resources and scheduling."
+      "reason": "You described learning goals — a coach can help organize resources and practice."
     },
     {
       "roleId": "fleet-custodian",
@@ -4099,7 +4779,7 @@
   },
   "fleetDoctrine": {
     "routingDoctrine": "{{ownerName}} decides whether to handle a request directly or delegate it.\nDurable work always routes to the specialist who owns that lane.\nSmall tasks never require a committee vote.\nWhen two profiles claim the same work, {{ownerName}} makes the call and records the decision.\nIf no permanent profile owns the task, spin up a disposable subagent.\nNever invent a permanent profile for one-off work.\nThe command profile delivers a single final answer, not a stack of agent reports.\nWork flows upward to the command profile for synthesis.\nRouting rules live in the shared knowledge layer and must stay current.\nStale routing documentation will send active work to retired agents.",
-    "credentialDoctrine": "Credentials belong exclusively to the command profile.\nSpecialists request access but never hold the keys.\nA permission wall means the boundary is working, not broken.\nRoute the request back to the command profile for execution.\nSubagents inherit zero integrations and zero credentials.\nParent agents must not pass secrets to temporary workers.\nHigh-risk operations stay locked behind the command profile.\n{{ownerName}} retains full control over public tools and approvals.\nCredential leakage breaks the entire fleet architecture.\nKeep access minimal and enforce strict handoff protocols.",
+    "credentialDoctrine": "Integration credentials belong exclusively to the command profile. Model authentication is configured separately per runtime/provider and may be required by each profile.\nSpecialists request access but never hold the keys.\nA permission wall means the boundary is working, not broken.\nRoute the request back to the command profile for execution.\nSubagents inherit zero integrations and zero credentials.\nParent agents must not pass secrets to temporary workers.\nHigh-risk operations stay locked behind the command profile.\n{{ownerName}} retains full control over public tools and approvals.\nCredential leakage breaks the entire fleet architecture.\nKeep access minimal and enforce strict handoff protocols.",
     "subagentDoctrine": "Use disposable subagents for research, testing, critique, and parallel analysis.\nApply the permanence test before creating any new profile.\nDoes the role own real recurring work that outlives a single session?\nDoes it require isolated memory, a different working directory, distinct permissions, and a curated skill set?\nWill you know exactly when work should and should not route to it?\nIf the answer to any question is unclear, keep the worker disposable.\nSpin up the subagent, run the task, and discard it immediately.\nNever grant permanent memory or configuration to temporary workers.\nFleet scale grows only when ownership becomes unambiguous.",
     "memoryDoctrine": "Each agent maintains isolated memory for its own lane.\nShared truth lives in a single centralized knowledge layer.\nA research agent must never absorb a writer's personal habits.\nRole definitions, routing rules, and handoff procedures belong in shared truth.\nLocal memory stores only agent-specific context and working state.\nCross-contamination between agent memories breaks routing accuracy.\n{{ownerName}} reads the shared layer to verify current fleet state.\nUpdate the shared layer whenever ownership or procedures change.\nIsolated memory prevents drift while shared truth keeps the fleet aligned.",
     "verificationDoctrine": "File existence proves nothing about actual system state.\nVerify configuration, active processes, and command line arguments.\nInspect logs and trace real behavior against expected outcomes.\nCheck for credential leakage, duplicate gateways, and stale schedules.\nConfirm that retired profiles no longer receive routing traffic.\nA green status flag can be stale in either direction.\nRun continuous verification to catch model drift and missing skills.\nClean up broken routing references before they trigger failures.\n{{ownerName}} must validate behavior, not just read status files.\nProduction readiness depends on verified recovery, not passive monitoring.",

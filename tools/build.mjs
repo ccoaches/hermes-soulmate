@@ -32,9 +32,7 @@ try {
 }
 
 // Inlined JSON must never contain a literal </script> or a lone "<!--".
-const serialized = JSON.stringify(pack, null, 2)
-  .replace(/<\/script/gi, '<\\/script')
-  .replace(/<!--/g, '<\\!--');
+const serialized = JSON.stringify(pack, null, 2).replace(/</g, '\\u003c');
 
 const html = fs.readFileSync(PAGE, 'utf8');
 const start = html.indexOf(OPEN);

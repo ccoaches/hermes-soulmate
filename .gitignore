@@ -8,3 +8,14 @@ node_modules
 intake_server.py
 reference/
 hermes-intake-answers*.json
+
+# Local interview exports, research captures, and test artifacts.
+/output/
+/interview.json
+/session.json
+/hermes-interview*.json
+/hermes-agent-kit*.json
+/hermes-setup-plan*.json
+/setup-plan.*
+/spec/HARDENING.md
+/spec/QUESTIONNAIRE-EXPANSION.md

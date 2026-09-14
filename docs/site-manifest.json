@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "algorithm": "sha256",
+  "files": {
+    "index.html": "dd868f4815743c5212cc2a65fc6cd94c9ea3852143689a183fdb8fc1c26536f4",
+    "app.mjs": "40939898ff49be72baa2adc64578158066c7b639ea9b7c135af185b5e1766d42",
+    "styles.css": "552dd545173ca66aba7d785c864893be34eb56271fae31e90243652666c8d59b",
+    "interview.mjs": "dd5996aaca8d0b473b399471eb38410e53eb4584c55ed5e6b09ff1469a54476d",
+    "questions.json": "9fa05053670efef1a29ffa36ccae0b9e101b8e08a8b0590117a1715011f281ca",
+    "START-HERE.md": "177f8e856ca50e80c6ed3ac81f4f146fc6f85fd960333afeb01085a67ab4fe5f",
+    "RESEARCH.md": "379dfa6c63162daea0811990ba8ce967d03acc31a8bb7edea2d108f93042d4a8",
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
