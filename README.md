@@ -20,21 +20,48 @@ and attach the file to Claude, Codex, ChatGPT, Hermes or another agent. The kit
 contains the questions, instructions and current answers. Ask the agent to return
 the updated interview JSON, then import it here to continue.
 
-Your answers are not sent to a server by the wizard. Exports contain your answers,
-so share them deliberately. Never enter API keys or passwords. You receive a
+The ordinary questionnaire keeps your answers in your browser. Optional AI guidance
+sends the current question, its saved answer and that question's chat directly to
+your chosen provider after you consent. Exports contain your answers, so share them
+deliberately. Never enter API keys or passwords into questionnaire answers. You receive a
 setup plan and verification checklist; installation is a separate agent-assisted step.
+
+### Guide me with AI (bring your own provider)
+
+Choose **Guide me with AI**, select OpenRouter or enter an OpenAI-compatible chat
+completions endpoint, and supply your exact model ID and your own API key. The
+interviewer model is separate from the models you are planning for Hermes. Confirm
+the displayed destination and sharing notice before connecting, then ask questions
+or discuss your answer. Suggestions become interview answers only when you select
+**Use this answer**. No service is installed or configured by this chat.
+
+Keys and conversation history live only in this tab's memory, never browser storage
+or exports. Disconnect or refresh to forget the connection. Only the current
+question and its conversation are shared, not the entire saved interview. Your
+provider may charge for requests and handles them under its own privacy policies.
+The site owner runs no proxy and receives neither keys nor chat requests.
+
+Custom services must implement `/chat/completions` and permit browser CORS requests
+from this site's origin. HTTPS is required except for explicit loopback endpoints.
+Local connections can also be limited by browser local-network permissions and
+mixed-content rules. Do not disable browser security to work around a failure.
+Ollama's compatible API can use `/v1/chat/completions`; its allowed origins require
+configuration. Native Anthropic Messages endpoints are not supported by this mode.
+See [OpenRouter's API guide](https://openrouter.ai/docs/quickstart) and
+[Ollama's origin configuration](https://docs.ollama.com/faq).
 
 ### Privacy
 
 The site owner does not receive interview answers. There is no sign-up, answer
-submission, database, analytics, tracking pixel or model API connection. Answers
+submission to us, database, analytics or tracking pixel. Answers
 are saved in the visitor's own browser storage. **Start over** clears that saved
 interview. Downloaded files remain wherever the visitor saved them.
 
 Sharing an agent kit is the visitor's choice; their selected AI service then handles
 that file under its own policies. GitHub Pages serves ordinary public site files and
 may process standard hosting access information; questionnaire answers are not
-included in those requests. The wizard itself collects no visitor information.
+included in those requests. Optional AI guidance instead sends limited interview
+context directly to the provider you choose; the site owner does not collect it.
 
 ## Run a local copy (optional)
 
@@ -50,8 +77,9 @@ your choices, then download the portable interview and setup plan. If the port
 is in use, pass another one: `node v2/serve.mjs 8788`.
 
 The preview serves only the wizard's public files on your own machine. Answers
-stay in this browser until you export them; exports contain your answers. No
-model connection is required. Never enter API keys or passwords.
+stay in this browser unless you export them or explicitly use AI guidance; exports
+contain your answers. No model connection is required for the ordinary wizard.
+Enter a provider key only in the separate AI connection field, never in answers.
 
 **Prefer a live conversation?** Point Claude, Codex, Hermes or another agent at
 [`v2/START-HERE.md`](v2/START-HERE.md). It uses the same question catalog and session
@@ -76,6 +104,8 @@ V2 verification:
 node tests/v2-engine.mjs
 node tests/v2-server.mjs
 node tests/v2-browser.mjs
+node tests/ai-client.mjs
+node tests/ai-browser.mjs
 ```
 
 The browser test requires Playwright and Chrome (or a Playwright-installed Chromium).

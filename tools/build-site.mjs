@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 export const publicFiles = Object.freeze([
   'index.html', 'app.mjs', 'styles.css', 'interview.mjs', 'questions.json',
-  'START-HERE.md', 'RESEARCH.md',
+  'START-HERE.md', 'RESEARCH.md', 'ai-client.mjs',
 ]);
 const generatedFiles = [...publicFiles, '.nojekyll', 'site-manifest.json'];
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');

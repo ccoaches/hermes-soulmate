@@ -9,6 +9,7 @@ const files = new Map([
   ['/', ['index.html', 'text/html']],
   ['/index.html', ['index.html', 'text/html']],
   ['/app.mjs', ['app.mjs', 'text/javascript']],
+  ['/ai-client.mjs', ['ai-client.mjs', 'text/javascript']],
   ['/interview.mjs', ['interview.mjs', 'text/javascript']],
   ['/styles.css', ['styles.css', 'text/css']],
   ['/questions.json', ['questions.json', 'application/json']],
